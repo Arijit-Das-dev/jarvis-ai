@@ -3,13 +3,13 @@ import cohere
 from Backend.Config.settings import settings # cohere api key
 from Backend.Core.Features.LLmModelCore.llmService import llm_service_provider # cohere model
 
-""" SETTING UP COHERE MODEL """ # TEMPLETE
+""" SETTING UP COHERE MODEL """
 class MODEL_COHERE:
-    
+
     def __init__(self):
         
-        self.MODEL = llm_service_provider.MODEL_COHERE
-        self.CLIENT = cohere.ClientV2(api_key=settings.COHERE_API_KEY)
+        self.MODEL = llm_service_provider.MODEL_COHERE # BACKEND/CORE/FEATURES/LLMMODELCORE/LLMSERVICE
+        self.CLIENT = cohere.ClientV2(api_key=settings.COHERE_API_KEY) # BACKEND/CONFIG/SETTINGS
         self.MEMORY = []
 
         root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -23,12 +23,7 @@ class MODEL_COHERE:
          # Memory control (last 2 turns)
         MAX_TURNS = 2
         self.MEMORY = self.MEMORY[-(MAX_TURNS * 2):]
-
-        # formatted context
-        formatted_Context = "\n\n".join(
-            [f"[Chunk {i+1}]\n{chunk}" for i, chunk in enumerate(context)]
-        ) 
-
+        
         messages = [
             {
                 "role":"system",
@@ -36,7 +31,7 @@ class MODEL_COHERE:
             },
             {
                 "role":"system",
-                "content": f"Context:\n{formatted_Context}"
+                "content": f"Context:\n{context}"
             },
             *self.MEMORY,
             {
