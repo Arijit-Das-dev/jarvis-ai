@@ -7,6 +7,6 @@ def test():
     chunks = ipm.text_to_chunks(documents=document) # split into chunks 
     vectorStore = ipm.create_vector_db(chunks=chunks) # store to vector db
     return vectorStore
-    
+
 if __name__ == "__main__":
     test()

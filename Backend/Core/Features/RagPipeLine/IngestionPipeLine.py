@@ -1,6 +1,7 @@
 import os
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+from Backend.Core.Features.LLmModelCore.llmService import embedding_model_provider
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
@@ -11,11 +12,11 @@ class INGESTION_PIPELINE_MODEL:
     # LOADING ALL FOLDERS TO THE LANGCHAIN DIRECTORY
     # ==============================================
     def load_all_docs(self, file_path: str):
-        
+
         # checking if that folder path exists
         if not os.path.exists(file_path):
             raise FileNotFoundError(f"{file_path} Not found")
-        
+
         # load all folders + files to the Langchain Directory
         loader = DirectoryLoader(
             path=file_path,
@@ -85,7 +86,7 @@ class INGESTION_PIPELINE_MODEL:
     def create_vector_db(self, chunks, db_path="DB/ChromaDB"):
 
         embeddings = HuggingFaceEmbeddings(
-            model_name = "sentence-transformers/all-MiniLM-L6-v2"
+            model_name = embedding_model_provider.HUGGING_FACE_MODEL
         )
 
         vector_store = Chroma.from_documents(
