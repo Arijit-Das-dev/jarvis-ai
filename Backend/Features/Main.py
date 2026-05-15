@@ -1,4 +1,5 @@
 import time as t
+import uuid
 from Backend.Services.modelLlama import Jarvis
 from Backend.Core.Features.LLmModelCore.greetFunc import greet
 from Frontend.F_Main import style3_MAIN, animation
@@ -11,6 +12,8 @@ animation()
 j = Jarvis()
 
 if __name__ == "__main__":
+    
+    userID = str(uuid.uuid4())
     
     greet()
 
@@ -27,7 +30,7 @@ if __name__ == "__main__":
 
             # Run main Jarvis conversation
             query = j.take_command()
-            insert_into_user(query_user=query)
+            insert_into_user(user_id=userID,query_user=query)
 
             if query != "none":
                 result = j.JarvisRun(query)

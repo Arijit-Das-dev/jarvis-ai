@@ -1,0 +1,21 @@
+# LLM => LLAMA, GEMINI, COHERE, MISTRAL
+
+LLM_MODELS:
+  
+  LLAMA:
+    modelName: "llama-3.3-70b-versatile"
+
+  MISTRAL:
+    mistral_1: "ministral-8b-latest"
+    mistral_2: "mistral-small-latest"
+  
+  GEMINI:
+    gemini: "gemini-2.5-flash-lite"
+  
+  COHERE: 
+    cohere: "command-r-08-2024"
+  
+EMBEDDING_MODELS:
+
+  Huggingface:
+    huggingface_model: "sentence-transformers/all-MiniLM-L6-v2"

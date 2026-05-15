@@ -6,7 +6,7 @@ streamlit
 pyaudio
 Pillow
 cohere
-google-generativeai
+google-genai
 groq
 mistralai
 pymongo

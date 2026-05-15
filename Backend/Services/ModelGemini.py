@@ -2,7 +2,7 @@
 
 from Backend.Config.settings import settings
 from Backend.Core.Features.LLmModelCore.llmService import llm_service_provider
-from google import generativeai as genai
+from google import genai
 from google.generativeai import types
 import os
 
