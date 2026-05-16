@@ -1,4 +1,4 @@
-# Storing API keys 
+# Storing API keys , database urls, hosts, passwords
 
 import os
 from dotenv import load_dotenv

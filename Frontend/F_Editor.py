@@ -334,10 +334,6 @@ def landing_section1():
             designed to help developers write, debug, optimize, and understand
             code faster using advanced LLMs and real-time AI assistance.
         </div>
-        <div class="button-row">
-            <a href="#" class="primary-btn">🚀 Launch Editor</a>
-            <a href="#" class="secondary-btn">⚡ Explore Features</a>
-        </div>
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-number">AI</div>
