@@ -28,8 +28,7 @@ userId = st.session_state.user_id
 
 # ---------------- Landing Page ----------------
 if not st.session_state.started:
-    ui.landing_section1()
-    start = ui.landing_section2() # just renders user guide
+    start = ui.landing_section1() 
 
     # If "Get Started" clicked, update session_state and rerun
     if start:

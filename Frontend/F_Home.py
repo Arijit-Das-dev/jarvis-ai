@@ -56,7 +56,7 @@ def render_about_page():
     }    .logo {
         display: flex;
         align-items: center;
-        gap: 12px;        font-size: 1.3rem;
+        gap: 12px;        font-size: 5.9rem;
         font-weight: 800;
         letter-spacing: -0.5px;
     }    .logo-gradient {
@@ -324,7 +324,6 @@ def render_about_page():
     st.markdown("""    <div class="main-wrapper">        <!-- =====================================================
              NAVBAR
         ====================================================== -->        <div class="navbar">            <div class="logo">
-                🧠
                 <span class="logo-gradient">Jarvis</span>
             </div>            <div class="nav-links">
                 <a href="#features">Features</a>

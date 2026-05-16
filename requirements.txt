@@ -19,3 +19,4 @@ langchain-chroma
 chromadb
 sentence-transformers
 pypdf
+python -m streamlit run Backend/Features/AllPages.py

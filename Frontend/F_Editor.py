@@ -4,7 +4,7 @@ import re
 
 # ---------- PAGE CONFIG ----------
 st.set_page_config(
-    page_title="Editor",
+    page_title="Jarvis Editor",
     layout="centered"
 )
 
@@ -12,398 +12,357 @@ st.set_page_config(
 def inject_css():
     st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-    
-    /* APP BACKGROUND WITH ANIMATED GRADIENT */
-    .stApp {
-        background: linear-gradient(135deg, #0a0118 0%, #1a0b2e 25%, #2d1b4e 50%, #1a0b2e 75%, #0a0118 100%);
-        background-size: 400% 400%;
-        animation: gradientShift 15s ease infinite;
-        color: white;
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+    html, body, [class*="css"] {
         font-family: 'Inter', sans-serif;
     }
-    
-    @keyframes gradientShift {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-    }
-    
-    /* FLOATING PARTICLES */
-    .stApp::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: 
-            radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(75, 0, 130, 0.15) 0%, transparent 50%);
-        pointer-events: none;
-        z-index: 0;
+
+    .stApp{
+        background:
+        radial-gradient(circle at top left, rgba(124,58,237,0.16), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(59,130,246,0.14), transparent 35%),
+        linear-gradient(135deg,#060816 0%,#090b1d 35%,#0f1024 70%,#060816 100%);
+        overflow-x:hidden;
     }
 
-    /* GLASS CARD */
-    .glass-card {
-        position: relative;
-        background: linear-gradient(135deg, rgba(20, 20, 40, 0.85) 0%, rgba(10, 10, 25, 0.9) 100%);
-        border-radius: 32px;
-        padding: 60px 70px;
-        border: 1px solid rgba(147, 51, 234, 0.3);
-        box-shadow:
-            0 8px 32px rgba(138, 43, 226, 0.4),
-            0 0 100px rgba(147, 51, 234, 0.2),
-            inset 0 0 80px rgba(147, 51, 234, 0.05);
+    /* SIDEBAR */
+    section[data-testid="stSidebar"]{
+        background: rgba(8,10,24,0.92);
+        border-right:1px solid rgba(255,255,255,0.06);
         backdrop-filter: blur(20px);
-        max-width: 1200px;
-        margin: 30px auto;
-        transition: all 0.4s ease;
-        overflow: hidden;
-    }
-    
-
-    
-    /* DECORATIVE ORBS */
-    .glass-card .orb {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(60px);
-        opacity: 0.3;
-        pointer-events: none;
-        animation: float 8s ease-in-out infinite;
-    }
-    
-    .glass-card .orb-1 {
-        width: 200px;
-        height: 200px;
-        background: radial-gradient(circle, #8b5cf6, transparent);
-        top: -50px;
-        right: -50px;
-    }
-    
-    .glass-card .orb-2 {
-        width: 180px;
-        height: 180px;
-        background: radial-gradient(circle, #d946ef, transparent);
-        bottom: -40px;
-        left: -40px;
-        animation-delay: -4s;
-    }
-    
-    @keyframes float {
-        0%, 100% { transform: translate(0, 0) scale(1); }
-        33% { transform: translate(20px, -20px) scale(1.1); }
-        66% { transform: translate(-15px, 15px) scale(0.9); }
-    }
-                
-    /* TITLE WITH GRADIENT */
-    .hero-title {
-        font-size: 58px;
-        font-weight: 700;
-        line-height: 1.15;
-        margin-bottom: 24px;
-        background: linear-gradient(135deg, #ffffff 0%, #e0d4ff 50%, #c4b5fd 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        letter-spacing: -0.02em;
-        position: relative;
-        z-index: 1;
-    }
-    
-    .hero-title .accent {
-        background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
     }
 
-    /* USER GUIDE TEXT */
-    .hero-sub {
-        font-size: 17px;
-        color: #d4d4ff;
-        line-height: 1.8;
-        margin-top: 20px;
-        opacity: 0.95;
-        position: relative;
-        z-index: 1;
-    }
-    
-    .hero-sub p {
-        margin: 14px 0;
-        padding-left: 8px;
-        border-left: 3px solid rgba(167, 139, 250, 0.4);
-        transition: all 0.3s ease;
-    }
-    
-    .hero-sub p:hover {
-        border-left-color: rgba(167, 139, 250, 0.8);
-        transform: translateX(5px);
-        color: #ffffff;
+    section[data-testid="stSidebar"] *{
+        color:white !important;
     }
 
-    /* BUTTON */
+    .block-container{
+        padding-top: 2rem !important;
+        max-width: 1200px !important;
+    }
+
+    header[data-testid="stHeader"]{
+        background: transparent;
+    }
+
+    /* HERO SECTION */
+
+    .jarvis-wrapper{
+        position:relative;
+        overflow:hidden;
+        border-radius:32px;
+        padding:70px 60px;
+        background:
+        linear-gradient(135deg,
+        rgba(18,20,40,0.94) 0%,
+        rgba(12,14,30,0.96) 100%);
+        border:1px solid rgba(255,255,255,0.08);
+
+        box-shadow:
+        0 10px 40px rgba(0,0,0,0.45),
+        0 0 120px rgba(124,58,237,0.16);
+
+        margin-bottom:40px;
+    }
+
+    .jarvis-wrapper::before{
+        content:'';
+        position:absolute;
+        inset:0;
+        background:
+        radial-gradient(circle at top right,
+        rgba(124,58,237,0.22),
+        transparent 35%);
+        pointer-events:none;
+    }
+
+    .orb{
+        position:absolute;
+        border-radius:50%;
+        filter:blur(90px);
+        opacity:0.28;
+        pointer-events:none;
+    }
+
+    .orb1{
+        width:240px;
+        height:240px;
+        background:#7c3aed;
+        top:-80px;
+        right:-50px;
+        animation: float 9s ease-in-out infinite;
+    }
+
+    .orb2{
+        width:220px;
+        height:220px;
+        background:#2563eb;
+        bottom:-80px;
+        left:-50px;
+        animation: float 10s ease-in-out infinite;
+    }
+
+    @keyframes float{
+        0%,100%{
+            transform:translateY(0px);
+        }
+        50%{
+            transform:translateY(-20px);
+        }
+    }
+
+    .badge{
+        display:inline-flex;
+        align-items:center;
+        gap:10px;
+
+        padding:10px 18px;
+        border-radius:999px;
+
+        background:rgba(124,58,237,0.14);
+        border:1px solid rgba(124,58,237,0.35);
+        color:#c4b5fd;
+        font-size:13px;
+        font-weight:600;
+        letter-spacing:0.08em;
+        text-transform:uppercase;
+
+        margin-bottom:30px;
+    }
+    .pulse{
+        width:8px;
+        height:8px;
+        border-radius:50%;
+        background:#8b5cf6;
+        box-shadow:0 0 10px #8b5cf6;
+        animation:pulse 2s infinite;
+    }
+    @keyframes pulse{
+        0%,100%{
+            transform:scale(1);
+            opacity:1;
+        }
+        50%{
+            transform:scale(1.5);
+            opacity:0.5;
+        }
+    }
+    .hero-title{
+        font-size: clamp(42px,6vw,78px);
+        font-weight:900;
+        line-height:1.05;
+        letter-spacing:-0.04em;
+        color:white;
+        margin-bottom:25px;
+        max-width:900px;
+    }
+    .hero-title span{
+        background:linear-gradient(
+        135deg,
+        #a78bfa 0%,
+        #60a5fa 50%,
+        #ec4899 100%
+        );
+
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+    }
+    .hero-sub{
+        max-width:720px;
+        font-size:19px;
+        line-height:1.8;
+        color:rgba(220,220,240,0.72);
+        margin-bottom:40px;
+    }
+    .button-row{
+        display:flex;
+        gap:18px;
+        flex-wrap:wrap;
+        margin-bottom:60px;
+    }
+    .primary-btn{
+        padding:16px 28px;
+        border-radius:16px;
+        text-decoration:none;
+        background:linear-gradient(
+        135deg,
+        #7c3aed 0%,
+        #4f46e5 100%
+        );
+        color:white !important;
+        font-weight:600;
+        font-size:15px;
+        transition:0.3s ease;
+        box-shadow:
+        0 8px 25px rgba(124,58,237,0.45);
+    }
+    .primary-btn:hover{
+        transform:translateY(-4px);
+        box-shadow:
+        0 14px 40px rgba(124,58,237,0.65);
+    }
+    .secondary-btn{
+        padding:16px 28px;
+        border-radius:16px;
+        text-decoration:none;
+        background:rgba(255,255,255,0.04);
+        border:1px solid rgba(255,255,255,0.08);
+        color:#d4d4ff !important;
+        font-weight:500;
+        font-size:15px;
+        transition:0.3s ease;
+    }
+    .secondary-btn:hover{
+        background:rgba(255,255,255,0.08);
+        transform:translateY(-4px);
+    }
+    /* STATS */
+    .stats-grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+        gap:22px;
+        margin-top:10px;
+    }
+    .stat-card{
+        background:rgba(255,255,255,0.03);
+        border:1px solid rgba(255,255,255,0.06);
+        border-radius:22px;
+        padding:28px;
+        transition:0.35s ease;
+    }
+    .stat-card:hover{
+        transform:translateY(-6px);
+        border-color:rgba(124,58,237,0.35);
+    }
+    .stat-number{
+        font-size:42px;
+        font-weight:800;
+
+        background:linear-gradient(
+        135deg,
+        #c4b5fd,
+        #60a5fa
+        );
+
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+    }
+
+    .stat-label{
+        color:rgba(220,220,240,0.62);
+        margin-top:8px;
+        font-size:14px;
+    }
+    
+    /* =========================
+       STREAMLIT BUTTON STYLING
+    ========================== */
+
     .stButton > button {
-        background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
-        color: white;
-        border: none;
-        border-radius: 16px;
-        padding: 16px 40px;
-        font-size: 16px;
-        font-weight: 600;
-        box-shadow: 
-            0 0 30px rgba(139, 92, 246, 0.6),
-            0 4px 20px rgba(217, 70, 239, 0.4);
-        transition: all 0.3s ease;
-        cursor: pointer;
+        background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+        color: white !important;
+
+        border: none !important;
+        border-radius: 12px !important;
+
+        padding: 10px 18px !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+
+        box-shadow: 0 8px 25px rgba(124, 58, 237, 0.35) !important;
+
+        transition: all 0.25s ease !important;
+
         position: relative;
         overflow: hidden;
-        white-space: nowrap;
-        min-height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
-    
+
+    /* Hover effect */
+    .stButton > button:hover {
+        transform: translateY(-2px) scale(1.02) !important;
+        box-shadow: 0 12px 35px rgba(236, 72, 153, 0.45) !important;
+        border: none !important;
+    }
+
+    /* Click effect */
+    .stButton > button:active {
+        transform: scale(0.98) !important;
+    }
+
+    /* Optional glow animation */
     .stButton > button::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.25),
+            transparent
+        );
         transition: left 0.5s ease;
     }
-    
+
     .stButton > button:hover::before {
         left: 100%;
     }
 
-    .stButton > button:hover {
-        box-shadow: 
-            0 0 50px rgba(139, 92, 246, 0.9),
-            0 8px 30px rgba(217, 70, 239, 0.6);
-        transform: translateY(-3px);
-    }
-    
-    /* DIVIDER */
-    hr {
-        border: none;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.5), transparent);
-        margin: 50px 0;
-    }
-    
-    /* SECTION HEADER */
-    h2, h3 {
-        color: #e0d4ff !important;
-        font-weight: 600 !important;
-        position: relative;
-        padding-left: 20px;
-    }
-    
-    h2::before, h3::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 5px;
-        height: 70%;
-        background: linear-gradient(180deg, #8b5cf6, #d946ef);
-        border-radius: 3px;
-    }
-    
-    /* SELECTBOX STYLING */
-    div[data-baseweb="select"] > div {
-        background: rgba(30, 20, 50, 0.6) !important;
-        border: 1.5px solid rgba(167, 139, 250, 0.4) !important;
-        border-radius: 12px !important;
-        color: #ffffff !important;
-        transition: all 0.3s ease !important;
-    }
-    
-    div[data-baseweb="select"] > div:hover {
-        border-color: rgba(167, 139, 250, 0.7) !important;
-        box-shadow: 0 0 20px rgba(167, 139, 250, 0.3) !important;
-    }
-    
-    div[data-baseweb="select"] span {
-        color: #ffffff !important;
-        font-weight: 500 !important;
-    }
-    
-    /* MONACO EDITOR WRAPPER */
-    .streamlit-monaco {
-        border-radius: 16px !important;
-        overflow: hidden !important;
-        border: 1.5px solid rgba(167, 139, 250, 0.3) !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
-        transition: all 0.3s ease !important;
-    }
-    
-    .streamlit-monaco:hover {
-        border-color: rgba(167, 139, 250, 0.6) !important;
-        box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3) !important;
-    }
-    
-    /* TEXT AREA */
-    .stTextArea textarea {
-        background: rgba(30, 20, 50, 0.6) !important;
-        color: white !important;
-        border-radius: 16px !important;
-        border: 1.5px solid rgba(167, 139, 250, 0.3) !important;
-        padding: 16px 20px !important;
-        font-size: 15px !important;
-        transition: all 0.3s ease !important;
-        box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3) !important;
-    }
-    
-    .stTextArea textarea:focus {
-        border-color: rgba(167, 139, 250, 0.7) !important;
-        box-shadow: 
-            inset 0 2px 8px rgba(0, 0, 0, 0.3),
-            0 0 20px rgba(167, 139, 250, 0.4) !important;
-        outline: none !important;
-    }
-    
-    /* INFO BOX */
-    .stAlert {
-        background: rgba(139, 92, 246, 0.1) !important;
-        border: 1px solid rgba(167, 139, 250, 0.3) !important;
-        border-radius: 14px !important;
-        color: #d4d4ff !important;
-    }
-    
-    /* OUTPUT BOX ENHANCED */
-    .output-container {
-        border: 1.5px solid rgba(167, 139, 250, 0.3);
-        border-radius: 16px;
-        padding: 24px;
-        margin-top: 24px;
-        background: linear-gradient(135deg, rgba(20, 20, 40, 0.7) 0%, rgba(15, 15, 30, 0.8) 100%);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-        transition: all 0.3s ease;
-    }
-    
-    .output-container:hover {
-        border-color: rgba(167, 139, 250, 0.6);
-        box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3);
-    }
-    
-    .output-title {
-        font-weight: 600;
-        margin-bottom: 16px;
-        color: #ffffff;
-        font-size: 18px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    /* CODE BLOCKS IN OUTPUT */
-    .output-container pre {
-        background: rgba(10, 10, 20, 0.6) !important;
-        border: 1px solid rgba(167, 139, 250, 0.2) !important;
-        border-radius: 12px !important;
-        padding: 16px !important;
-        overflow-x: auto !important;
-    }
-    
-    .output-container code {
-        color: #a78bfa !important;
-        background: rgba(167, 139, 250, 0.15) !important;
-        padding: 2px 6px !important;
-        border-radius: 4px !important;
-        font-size: 14px !important;
-    }
-    
-    /* FEATURE BADGES */
-    .feature-badge {
-        display: inline-block;
-        background: rgba(167, 139, 250, 0.15);
-        border: 1px solid rgba(167, 139, 250, 0.3);
-        border-radius: 20px;
-        padding: 8px 18px;
-        margin: 6px 8px 6px 0;
-        font-size: 13px;
-        color: #c4b5fd;
-        font-weight: 500;
-        transition: all 0.3s ease;
-    }
-    
-    .feature-badge:hover {
-        background: rgba(167, 139, 250, 0.25);
-        border-color: rgba(167, 139, 250, 0.5);
-        transform: translateY(-2px);
-    }
-    
-    /* SCROLLBAR */
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-    
-    ::-webkit-scrollbar-track {
-        background: rgba(10, 10, 25, 0.5);
-    }
-    
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(180deg, #8b5cf6, #d946ef);
-        border-radius: 5px;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(180deg, #a78bfa, #ec4899);
-    }
     </style>
     """, unsafe_allow_html=True)
 
 # Landing Page 1
 def landing_section1():
     st.markdown("""
-    <div class="glass-card">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
+    <div class="jarvis-wrapper">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="badge">
+            <div class="pulse"></div>
+            AI POWERED DEVELOPMENT ENVIRONMENT
+        </div>
         <div class="hero-title">
-            Welcome to<br><span class="accent">Jarvis Editor</span>
+            Build Faster with
+            <span>Jarvis Editor</span>
         </div>
         <div class="hero-sub">
-            Write code in a clean, distraction-free editor.<br>
-            Submit your code to instantly detect errors and get AI-powered fixes.<br>
-            Built for learning, debugging, and productivity.
+            Jarvis Editor is an intelligent AI-powered coding environment
+            designed to help developers write, debug, optimize, and understand
+            code faster using advanced LLMs and real-time AI assistance.
         </div>
-        <div style="margin-top: 35px; position: relative; z-index: 1;">
-            <span class="feature-badge">✨ AI-Powered</span>
-            <span class="feature-badge">🐞 Smart Debugging</span>
-            <span class="feature-badge">⚡ Instant Analysis</span>
-            <span class="feature-badge">🎓 Learn While Coding</span>
+        <div class="button-row">
+            <a href="#" class="primary-btn">🚀 Launch Editor</a>
+            <a href="#" class="secondary-btn">⚡ Explore Features</a>
         </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.divider()
-
-# Landing Page 2
-def landing_section2():
-    st.markdown("""
-    <div class="glass-card">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="hero-title">
-           <span class="accent">User Guide</span>
-        </div>
-        <div class="hero-sub" >
-            <p>💡 Ask the AI anytime when you're stuck while writing code or don't understand something.</p>
-            <p>🧠 Get instant explanations of syntax, logic, and programming concepts in simple terms.</p>
-            <p>🐞 Paste error messages to receive debugging help with exact corrections.</p>
-            <p>✨ Ask the AI to improve, optimize, or refactor your code using best practices.</p>
-            <p>🚀 Learn continuously while coding, without switching tabs or tools.</p>
-            <p>▶️ When you submit your code, the AI automatically analyzes it like a compiler.</p>
-            <p>⚙️ The AI shows expected output, detects errors, and suggests corrected code.</p>
-            <p>🔍 Provides a dry run / step-by-step execution explaining why the error happened.</p>
-            <p>✅ Explains why the corrected solution works, not just the final answer.</p>
-            <p>📘 Helps you understand how the code executes internally, improving logic building.</p>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">AI</div>
+                <div class="stat-label">
+                    Integrated Copilot Assistance
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">
+                    Real-time Debugging Help
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">
+                    Programming Possibilities
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">LLM</div>
+                <div class="stat-label">
+                    Powered Intelligent Compiler
+                </div>
+            </div>
         </div>
     </div>
     """, unsafe_allow_html=True)
