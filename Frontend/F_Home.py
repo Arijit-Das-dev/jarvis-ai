@@ -345,35 +345,9 @@ def render_about_page():
                     </div>                    <div class="hero-buttons">                        
                         <a href="#features" class="secondary-btn">
                             Explore Features
-                        </a>                    </div>                </div>                <div class="hero-right">                    <div class="dashboard-preview">                        <div class="window-top">
-                            <div class="window-dot"></div>
-                            <div class="window-dot"></div>
-                            <div class="window-dot"></div>
-                        </div>                        <div class="dashboard-cards">                            <div class="mini-card">
-                                <div class="mini-icon">🎙️</div>
-                                <div class="mini-title">Voice Assistant</div>
-                                <div class="mini-desc">
-                                    Real-time STT + TTS intelligent voice interaction.
-                                </div>
-                            </div>                            <div class="mini-card">
-                                <div class="mini-icon">💻</div>
-                                <div class="mini-title">Jarvis Editor</div>
-                                <div class="mini-desc">
-                                    AI coding workspace with co-pilot assistance.
-                                </div>
-                            </div>                            <div class="mini-card">
-                                <div class="mini-icon">🎨</div>
-                                <div class="mini-title">JarvisLab</div>
-                                <div class="mini-desc">
-                                    Generate premium AI visuals and artwork instantly.
-                                </div>
-                            </div>                            <div class="mini-card">
-                                <div class="mini-icon">📄</div>
-                                <div class="mini-title">DocMind</div>
-                                <div class="mini-desc">
-                                    Chat with PDFs using advanced RAG pipelines.
-                                </div>
-                            </div>                        </div>                    </div>                </div>            </div>        </div>        <!-- =====================================================
+                        </a>                    </div>                </div>
+                            </div>
+                                              <!-- =====================================================
              FEATURES
         ====================================================== -->        <div class="section" id="features">            <div class="section-title">
                 Everything You Need.<br>
@@ -384,42 +358,42 @@ def render_about_page():
                 tools inside one ecosystem.
             </div>            <div class="feature-grid">                <div class="feature-card">
                     <div class="feature-icon">🎙️</div>
-                    <div class="feature-title">Voice Assistant</div>
+                    <div class="feature-title">Jarvis VoiceAssistant</div>
                     <div class="feature-description">
                         Natural voice interaction with real-time STT + TTS,
                         contextual memory, and intelligent workflow automation.
                     </div>
                 </div>                <div class="feature-card">
                     <div class="feature-icon">💻</div>
-                    <div class="feature-title">Jarvis Editor</div>
+                    <div class="feature-title">Jarvis Code/Debug</div>
                     <div class="feature-description">
                         A modern AI code editor with co-pilot support,
                         debugging assistance, and intelligent coding workflows.
                     </div>
                 </div>                <div class="feature-card">
                     <div class="feature-icon">🎨</div>
-                    <div class="feature-title">JarvisLab</div>
+                    <div class="feature-title">Jarvis ImageLab</div>
                     <div class="feature-description">
                         Create high-quality AI-generated images, posters,
                         concepts, and creative assets instantly.
                     </div>
                 </div>                <div class="feature-card">
                     <div class="feature-icon">✨</div>
-                    <div class="feature-title">PromptLab</div>
+                    <div class="feature-title">Jarvis PromptLab</div>
                     <div class="feature-description">
                         Generate optimized prompts for coding, writing,
                         automation, AI systems, and productivity workflows.
                     </div>
                 </div>                <div class="feature-card">
                     <div class="feature-icon">📄</div>
-                    <div class="feature-title">DocMind</div>
+                    <div class="feature-title">Jarvis ScholarHub</div>
                     <div class="feature-description">
                         RAG-powered PDF chatbot for extracting insights,
                         summaries, contextual answers, and knowledge.
                     </div>
                 </div>                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <div class="feature-title">Automation Engine</div>
+                    <div class="feature-icon">👨‍🎓</div>
+                    <div class="feature-title">Jarvis ResumeLab</div>
                     <div class="feature-description">
                         Automate repetitive workflows with LLM orchestration,
                         intelligent pipelines, and contextual AI systems.

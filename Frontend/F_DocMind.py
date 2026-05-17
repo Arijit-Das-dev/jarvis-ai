@@ -587,7 +587,7 @@ def landing_section1():
             </div>
             <div class="logo-text">
                 <div class="logo-main">
-                    DocMind
+                    Jarvis Scholar
                 </div>
                 <div class="logo-sub">
                     AI PDF CHATBOT + SMART NOTE SUMMARIZER
@@ -595,7 +595,7 @@ def landing_section1():
             </div>
         </div>
         <div class="hero-desc">
-            <strong>DocMind</strong>
+            <strong>Jarvis Scholar</strong>
             is an AI-powered learning workspace designed for students and researchers.
             Upload PDFs and chat with your documents using advanced
             <strong>RAG (Retrieval-Augmented Generation)</strong>
