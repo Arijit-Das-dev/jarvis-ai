@@ -1,6 +1,4 @@
 import streamlit as st
-import textwrap
-import random
 
 def inject_css():
     st.markdown("""
@@ -572,7 +570,7 @@ def landing_section():
             </div>
             <div class="logo">
                 <span class="logo-gradient">
-                    JarvisLab
+                    Jarvis ImageLab
                 </span>
             </div>
             <div class="hero-sub">

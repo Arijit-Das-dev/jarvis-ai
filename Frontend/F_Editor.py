@@ -4,7 +4,7 @@ import re
 
 # ---------- PAGE CONFIG ----------
 st.set_page_config(
-    page_title="Jarvis Editor",
+    page_title="Code/Debug",
     layout="centered"
 )
 
@@ -327,10 +327,10 @@ def landing_section1():
         </div>
         <div class="hero-title">
             Build Faster with
-            <span>Jarvis Editor</span>
+            <span>Jarvis Code/Debug</span>
         </div>
         <div class="hero-sub">
-            Jarvis Editor is an intelligent AI-powered coding environment
+            Jarvis Code/Debug is an intelligent AI-powered coding environment
             designed to help developers write, debug, optimize, and understand
             code faster using advanced LLMs and real-time AI assistance.
         </div>

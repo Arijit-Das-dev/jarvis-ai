@@ -13,7 +13,7 @@ from Backend.Services.modelCohere2 import MODEL_COHERE_2
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 st.set_page_config(
-    page_title="Jarvis Scholar",
+    page_title="Scholar",
     layout="centered"
 )
 ui.inject_css()

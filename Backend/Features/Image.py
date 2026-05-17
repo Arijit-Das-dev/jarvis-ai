@@ -14,7 +14,7 @@ user_id = st.session_state.user_id
 
 st.set_page_config(
 
-    page_title="Lab",
+    page_title="ImageLab",
     layout="centered"
     )
 
