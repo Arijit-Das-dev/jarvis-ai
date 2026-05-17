@@ -14,7 +14,8 @@ LLM_MODELS:
   
   COHERE: 
     cohere: "command-r-08-2024"
-  
+    cohere2: "command-a-03-2025"
+    
 EMBEDDING_MODELS:
 
   Huggingface:
