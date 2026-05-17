@@ -125,8 +125,8 @@ else:
 
     with col2:
 
-        st.text_area(
-            label="Ask your query below",
+        user = st.text_area(
+            label="Write bellow",
             height=500,
-            placeholder="Ask your query"
+            placeholder="Lets start making notes..."
         )
