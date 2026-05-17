@@ -6,6 +6,8 @@ import os
 from datetime import datetime
 from Backend.Core.Features.RagPipeLine.IngestionPipeLine import INGESTION_PIPELINE_MODEL
 from Backend.Core.Features.RagPipeLine.RetrievalPipeLine import RETRIEVAL_PIPELINE_MODEL
+from Backend.Core.Features.PdfGenerator.generate_pdf import PDF_GENERATOR
+
 
 # Add project root to path
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -130,5 +132,3 @@ else:
             height=500,
             placeholder="Lets start making notes..."
         )
-
-        
