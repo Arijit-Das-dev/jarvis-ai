@@ -764,3 +764,10 @@ def landing_section1():
     </div>
 
     """, unsafe_allow_html=True)
+
+    ol1,col2,_,_,col3, _ = st.columns(6)
+
+    with col2:
+        button = st.button("🚀 Get Started")
+    
+    return button
