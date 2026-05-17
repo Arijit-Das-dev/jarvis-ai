@@ -4,7 +4,7 @@ from Backend.Config.settings import settings # cohere api key
 from Backend.Core.Features.LLmModelCore.llmService import llm_service_provider # cohere model
 
 """ SETTING UP COHERE MODEL """
-class MODEL_COHERE:
+class MODEL_COHERE_2:
 
     def __init__(self):
         

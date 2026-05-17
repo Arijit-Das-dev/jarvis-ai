@@ -49,4 +49,4 @@ class PDF_GENERATOR:
                 self.pdf.multi_cell(0, 7, line, ln=True)
 
         # --- Return as bytes (for Streamlit download) ---
-        return self.pdf.output()
+        return bytes(self.pdf.output())
