@@ -130,3 +130,5 @@ else:
             height=500,
             placeholder="Lets start making notes..."
         )
+
+        
