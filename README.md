@@ -61,14 +61,6 @@ A real-time conversational AI assistant with voice interaction support.
 - Text-to-Speech output
 - Natural AI communication
 
-### 🔹 Technologies
-```python
-llama-3.3-70b-versatile
-edge-tts
-SpeechRecognition
-PyAudio
-```
-
 ---
 
 ## 💻 Code/Debug
