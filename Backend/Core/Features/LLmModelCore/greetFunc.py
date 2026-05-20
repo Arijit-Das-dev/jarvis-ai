@@ -2,7 +2,7 @@
 import requests
 from datetime import datetime
 import time as t
-from Backend.Services.modelLlama import Jarvis
+from Backend.Services.llama_client import Jarvis
 
 j = Jarvis()
 

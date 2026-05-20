@@ -7,7 +7,7 @@ from datetime import datetime
 from Backend.Core.Features.RagPipeLine.IngestionPipeLine import INGESTION_PIPELINE_MODEL
 from Backend.Core.Features.RagPipeLine.RetrievalPipeLine import RETRIEVAL_PIPELINE_MODEL
 from Backend.Core.Features.PdfGenerator.generate_pdf import PDF_GENERATOR
-from Backend.Services.modelCohere2 import MODEL_COHERE_2
+from Backend.Services.cohere_client_2 import MODEL_COHERE_2
 
 # Add project root to path
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))

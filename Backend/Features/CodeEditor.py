@@ -1,7 +1,7 @@
 import streamlit as st
 import Frontend.F_Editor as ui 
 from DB.MongoDB.EditorDB import save_user_code, save_user_query
-from Backend.Services.modelMistral import modelMistral
+from Backend.Services.mistral_client import modelMistral
 import uuid
 import os
 import sys
