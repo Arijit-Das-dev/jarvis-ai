@@ -19,4 +19,5 @@ langchain-chroma
 chromadb
 sentence-transformers
 pypdf
+pdfplumber
 python -m streamlit run Backend/Features/AllPages.py
