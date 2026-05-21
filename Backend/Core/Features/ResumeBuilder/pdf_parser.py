@@ -45,8 +45,11 @@ class PDF_PARSER:
 
             result["total_pages"] = total_pages
 
+            final_result = result["total_pages"]
+
             if len(total_pages) > 1:
 
                 st.info("Resume must contains 1 page !!!")
 
-        return result              
+        st.info(f"Resume contains {final_result}.")
+        return final_result              
