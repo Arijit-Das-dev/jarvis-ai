@@ -1,10 +1,14 @@
 import streamlit as st
-
-
+import streamlit.components.v1 as components
+import time as t
 # =========================
 # CSS INJECTION
 # =========================
 def inject_css():
+
+    st.set_page_config(
+        layout="wide"
+    )
 
     st.markdown("""
     <style>
@@ -623,7 +627,414 @@ def inject_css():
         box-shadow:
         0 0 25px rgba(124,92,255,0.18);
     }
+    /* ============================= */
+    /* MAIN TWO SECTION WRAPPER */
+    /* ============================= */
 
+    .resume-main-grid{
+        display:flex;
+        justify-content:center;
+        align-items:stretch;
+        gap:35px;
+        margin-top:60px;
+        flex-wrap:wrap;
+    }
+
+    /* ============================= */
+    /* RESUME GLASS BOX */
+    /* ============================= */
+
+    .resume-box{
+        position:relative;
+
+        width:470px;
+        min-height:620px;
+
+        padding:45px;
+
+        border-radius:30px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(25,20,40,0.82),
+                rgba(12,10,24,0.92)
+            );
+
+        border:1px solid rgba(255,255,255,0.08);
+
+        backdrop-filter: blur(24px);
+
+        overflow:hidden;
+
+        transition:0.45s ease;
+
+        box-shadow:
+            0 10px 40px rgba(0,0,0,0.45),
+            0 0 80px rgba(124,92,255,0.12);
+    }
+
+    /* ============================= */
+    /* HOVER */
+    /* ============================= */
+
+    .resume-box:hover{
+
+        transform:
+            translateY(-10px)
+            scale(1.015);
+
+        border:1px solid rgba(124,92,255,0.25);
+
+        box-shadow:
+            0 25px 60px rgba(0,0,0,0.55),
+            0 0 120px rgba(124,92,255,0.25);
+    }
+
+    /* ============================= */
+    /* ANIMATED GLOW */
+    /* ============================= */
+
+    .resume-glow{
+        position:absolute;
+
+        width:260px;
+        height:260px;
+
+        background:
+            radial-gradient(
+                circle,
+                rgba(124,92,255,0.35),
+                transparent 70%
+            );
+
+        top:-80px;
+        right:-80px;
+
+        filter:blur(40px);
+
+        animation:floatGlow 6s ease-in-out infinite;
+    }
+
+    @keyframes floatGlow{
+
+        0%{
+            transform:translateY(0px);
+        }
+
+        50%{
+            transform:translateY(20px);
+        }
+
+        100%{
+            transform:translateY(0px);
+        }
+    }
+
+    /* ============================= */
+    /* CARD TAG */
+    /* ============================= */
+
+    .resume-tag{
+
+        display:inline-block;
+
+        padding:8px 18px;
+
+        border-radius:999px;
+
+        background:rgba(124,92,255,0.12);
+
+        border:1px solid rgba(124,92,255,0.25);
+
+        color:#b9a8ff;
+
+        font-size:13px;
+        font-weight:600;
+
+        margin-bottom:30px;
+
+        letter-spacing:0.5px;
+    }
+
+    /* ============================= */
+    /* TITLE */
+    /* ============================= */
+
+    .resume-title{
+
+        font-size:52px;
+        font-weight:800;
+
+        line-height:1.1;
+
+        margin-bottom:25px;
+
+        background:
+            linear-gradient(
+                90deg,
+                #ffffff,
+                #c4b5fd,
+                #8b5cf6
+            );
+
+        background-size:300% 300%;
+
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+
+        animation:titleGradient 6s ease infinite;
+    }
+
+    @keyframes titleGradient{
+
+        0%{
+            background-position:0% 50%;
+        }
+
+        50%{
+            background-position:100% 50%;
+        }
+
+        100%{
+            background-position:0% 50%;
+        }
+    }
+
+    /* ============================= */
+    /* SUBTITLE */
+    /* ============================= */
+
+    .resume-subtitle{
+
+        color:rgba(255,255,255,0.72);
+
+        font-size:15px;
+
+        line-height:1.9;
+
+        margin-bottom:40px;
+    }
+
+    /* ============================= */
+    /* FEATURES */
+    /* ============================= */
+
+    .resume-feature-list{
+
+        display:flex;
+        flex-direction:column;
+        gap:18px;
+    }
+
+    .resume-feature{
+
+        padding:16px 18px;
+
+        border-radius:16px;
+
+        background:rgba(255,255,255,0.03);
+
+        border:1px solid rgba(255,255,255,0.05);
+
+        color:#d8d8ff;
+
+        font-size:14px;
+
+        transition:0.3s ease;
+    }
+
+    .resume-feature:hover{
+
+        transform:translateX(8px);
+
+        border:1px solid rgba(124,92,255,0.25);
+
+        background:rgba(124,92,255,0.08);
+    }
+
+    /* ============================= */
+    /* BUTTON */
+    /* ============================= */
+
+    div.stButton > button{
+
+        width:100%;
+
+        margin-top:30px;
+
+        height:58px;
+
+        border:none;
+
+        border-radius:18px;
+
+        background:
+            linear-gradient(
+                90deg,
+                #7C5CFF,
+                #00D4FF
+            );
+
+        color:white;
+
+        font-size:16px;
+        font-weight:700;
+
+        transition:0.35s ease;
+
+        box-shadow:
+            0 0 30px rgba(124,92,255,0.35);
+    }
+
+    div.stButton > button:hover{
+
+        transform:
+            translateY(-3px)
+            scale(1.01);
+
+        box-shadow:
+            0 0 45px rgba(124,92,255,0.6);
+
+        background:
+            linear-gradient(
+                90deg,
+                #8d72ff,
+                #36deff
+            );
+    }
+
+    /* ============================= */
+    /* RESPONSIVE */
+    /* ============================= */
+
+    @media(max-width:1100px){
+
+        .resume-box{
+            width:100%;
+        }
+    }
+    
+    /* FILE UPLOADER */
+
+    [data-testid="stFileUploader"] {
+
+        background: rgba(20,20,35,0.7);
+
+        border: 1px solid rgba(124,92,255,0.25);
+
+        padding: 25px;
+
+        border-radius: 20px;
+
+        backdrop-filter: blur(20px);
+
+        box-shadow:
+            0 0 30px rgba(124,92,255,0.15);
+
+        transition: 0.3s ease;
+    }
+
+    [data-testid="stFileUploader"]:hover {
+
+        border: 1px solid rgba(124,92,255,0.5);
+
+        box-shadow:
+            0 0 50px rgba(124,92,255,0.3);
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap');
+
+    .parsing-loader{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:14px;
+        margin-top:120px;
+        font-family:'Inter',sans-serif;
+    }
+
+    .loader-dots{
+        display:flex;
+        gap:8px;
+    }
+
+    .loader-dots span{
+        width:10px;
+        height:10px;
+        border-radius:50%;
+
+        background:linear-gradient(
+            135deg,
+            #7C5CFF,
+            #00D4FF
+        );
+
+        animation:bounce 0.8s infinite ease-in-out;
+    }
+
+    .loader-dots span:nth-child(2){
+        animation-delay:0.15s;
+    }
+
+    .loader-dots span:nth-child(3){
+        animation-delay:0.3s;
+    }
+
+    .loader-text{
+
+        font-size:20px;
+        font-weight:600;
+
+        background:linear-gradient(
+            90deg,
+            #ffffff,
+            #c4b5fd,
+            #7C5CFF
+        );
+
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+    }
+
+    @keyframes bounce{
+
+        0%,100%{
+            transform:translateY(0px);
+            opacity:0.5;
+        }
+
+        50%{
+            transform:translateY(-8px);
+            opacity:1;
+        }
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap');
+
+    .jarvis-header{
+        text-align:center;
+        margin-top:40px;
+        font-family:'Inter',sans-serif;
+    }
+
+    .jarvis-title{
+        font-size:60px;
+        font-weight:700;
+
+        background:linear-gradient(90deg,#7C5CFF,#00D4FF,#ffffff);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+    }
+
+    .jarvis-subtitle{
+        margin-top:8px;
+        font-size:16px;
+        color:#c4b5fd;
+        opacity:0.85;
+        letter-spacing:0.5px;
+    }
+                
     </style>
     """, unsafe_allow_html=True)
 
@@ -753,3 +1164,142 @@ def landing_section1():
     start_button = st.button("Get started")
 
     return start_button
+
+# =========================
+# RESUME BUILDER SECTION
+# =========================
+
+def resumeBuilder():
+
+    st.markdown("""
+    <div class="resume-box resume-builder-card">
+        <div class="resume-glow"></div>
+        <div class="resume-tag">
+            ✨ AI Resume Studio
+        </div>
+        <div class="resume-title">
+            Resume Builder
+        </div>
+        <div class="resume-subtitle">
+            Build professional ATS-optimized resumes using AI.  
+            Generate clean layouts, structured sections, and industry-ready resumes instantly.
+        </div>
+        <div class="resume-feature-list">
+            <div class="resume-feature">
+                ⚡ AI Generated Resume Sections
+            </div>
+            <div class="resume-feature">
+                🎯 ATS Friendly Formatting
+            </div>
+            <div class="resume-feature">
+                📄 Export as Professional PDF
+            </div>
+            <div class="resume-feature">
+                🧠 Smart Skills & Summary Suggestions
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    start1_btn =  st.button("Open Resume Builder", key="resume_builder_btn")
+
+    return start1_btn
+
+# =========================
+# RESUME ANALYSIS SECTION
+# =========================
+
+def resumeAnalysis():
+
+    st.markdown("""
+    <div class="resume-box resume-analysis-card">
+        <div class="resume-glow"></div>
+        <div class="resume-tag">
+            🔍 AI ATS Scanner
+        </div>
+        <div class="resume-title">
+            Resume Analysis
+        </div>
+        <div class="resume-subtitle">
+            Upload your resume and let AI analyze ATS compatibility, keyword optimization,
+            formatting quality, and improvement areas instantly.
+        </div>
+        <div class="resume-feature-list">
+            <div class="resume-feature">
+                📊 ATS Score Detection
+            </div>
+            <div class="resume-feature">
+                🐞 Resume Weak Point Analysis
+            </div>
+            <div class="resume-feature">
+                🚀 AI Improvement Suggestions
+            </div>
+            <div class="resume-feature">
+                💼 Recruiter Optimization Tips
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    start_btn2 = st.button("Analyze Resume", key="resume_analysis_btn")
+    
+    return start_btn2
+
+# RESUME ANALYSIS HEADING SECTION
+def heading():
+
+    st.markdown("""
+    <div class="jarvis-header">
+        <div class="jarvis-title">
+            JarvisCV Intelligence Engine
+        </div>
+        <div class="jarvis-subtitle">
+            Upload your resume to get started
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+def parsing_loader():
+
+    placeholder = st.empty()
+
+    with placeholder:
+        st.markdown("""
+        <div class="parsing-loader">
+            <div class="loader-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="loader-text">
+                Parsing document...
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    t.sleep(5)
+    placeholder.empty()
+
+# =========================
+# ANALYZER UI
+# =========================
+
+def analyzing_resume():
+    placeholder = st.empty()
+
+    with placeholder:
+        st.markdown("""
+        <div class="parsing-loader">
+            <div class="loader-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="loader-text">
+                showing info about your resume...
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    t.sleep(5)
+    placeholder.empty()
