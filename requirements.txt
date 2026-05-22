@@ -20,4 +20,4 @@ chromadb
 sentence-transformers
 pypdf
 pdfplumber
-python -m streamlit run Backend/Features/AllPages.py
+python -m streamlit run Backend/Features/app.py

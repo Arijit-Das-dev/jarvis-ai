@@ -3,7 +3,7 @@
 from Backend.Config.settings import settings
 from Backend.Core.Features.LLmModelCore.llmService import llm_service_provider
 from google import genai
-from google.generativeai import types
+from google.genai import types
 import os
 
 
@@ -36,12 +36,7 @@ class MODEL_GEMINI:
         try:
             response = self.client.models.generate_content(
                 model=self.Model,
-                contents=self.memory,
-                config=types.GenerateContentConfig(
-                    system_instruction=self.system_prompt,
-                    temperature=0.7,  # Higher = more creative, Lower = more factual
-                    max_output_tokens=1000,
-                )
+                contents=f"{self.memory} + {self.system_prompt}"
             )
             result = response.text
 

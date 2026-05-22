@@ -1,0 +1,755 @@
+import streamlit as st
+
+
+# =========================
+# CSS INJECTION
+# =========================
+def inject_css():
+
+    st.markdown("""
+    <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+    /* =========================
+       GLOBAL
+    ========================== */
+
+    html, body, [class*="css"]  {
+        font-family: 'Inter', sans-serif;
+    }
+
+    .stApp{
+        background:
+        radial-gradient(circle at top left, rgba(124,92,255,0.18), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(0,212,255,0.12), transparent 25%),
+        linear-gradient(135deg,#07070d 0%, #0f1020 35%, #14162b 100%);
+        overflow-x:hidden;
+    }
+
+    /* =========================
+       MAIN WRAPPER
+    ========================== */
+
+    .jarviscv-wrapper{
+        position:relative;
+        width:100%;
+        padding:40px 3% 80px 3%;
+        overflow:hidden;
+    }
+
+    /* =========================
+       FLOATING BLURS
+    ========================== */
+
+    .blur-orb{
+        position:absolute;
+        border-radius:50%;
+        filter:blur(90px);
+        opacity:0.4;
+        animation: floatOrb 10s ease-in-out infinite;
+        pointer-events:none;
+    }
+
+    .orb1{
+        width:260px;
+        height:260px;
+        background:#7C5CFF;
+        top:-60px;
+        left:-50px;
+    }
+
+    .orb2{
+        width:240px;
+        height:240px;
+        background:#00D4FF;
+        right:-70px;
+        bottom:100px;
+        animation-delay:4s;
+    }
+
+    @keyframes floatOrb{
+        0%{
+            transform:translateY(0px) translateX(0px);
+        }
+        50%{
+            transform:translateY(-20px) translateX(15px);
+        }
+        100%{
+            transform:translateY(0px) translateX(0px);
+        }
+    }
+
+    /* =========================
+       HERO SECTION
+    ========================== */
+
+    .hero-container{
+        position:relative;
+        z-index:2;
+        max-width:1350px;
+        margin:auto;
+        padding:70px;
+        border-radius:34px;
+
+        background:rgba(255,255,255,0.04);
+
+        border:1px solid rgba(255,255,255,0.08);
+
+        backdrop-filter: blur(18px);
+
+        box-shadow:
+        0 10px 40px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+
+        overflow:hidden;
+    }
+
+    /* =========================
+       TOP BADGE
+    ========================== */
+
+    .top-badge{
+        display:inline-flex;
+        align-items:center;
+        gap:10px;
+
+        padding:10px 18px;
+
+        border-radius:999px;
+
+        background:rgba(124,92,255,0.12);
+
+        border:1px solid rgba(124,92,255,0.25);
+
+        color:#cfc7ff;
+
+        font-size:13px;
+        font-weight:600;
+        letter-spacing:0.4px;
+
+        margin-bottom:28px;
+
+        animation: fadeUp 0.8s ease;
+    }
+
+    .pulse-dot{
+        width:8px;
+        height:8px;
+        border-radius:50%;
+        background:#7C5CFF;
+
+        box-shadow:0 0 15px #7C5CFF;
+
+        animation:pulse 1.8s infinite;
+    }
+
+    @keyframes pulse{
+        0%{
+            transform:scale(1);
+            opacity:1;
+        }
+        50%{
+            transform:scale(1.5);
+            opacity:0.5;
+        }
+        100%{
+            transform:scale(1);
+            opacity:1;
+        }
+    }
+
+    /* =========================
+       LOGO TEXT
+    ========================== */
+
+    .logo{
+        display:flex;
+        align-items:center;
+        gap:14px;
+        margin-bottom:30px;
+    }
+
+    .logo-text{
+        font-size:5.4rem;
+        font-weight:900;
+        line-height:1;
+
+        background: linear-gradient(
+            90deg,
+            #ffffff 0%,
+            #7C5CFF 30%,
+            #00D4FF 65%,
+            #ffffff 100%
+        );
+
+        background-size:300% auto;
+
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+
+        animation: gradientFlow 6s linear infinite;
+    }
+
+    @keyframes gradientFlow{
+        0%{
+            background-position:0% center;
+        }
+        100%{
+            background-position:300% center;
+        }
+    }
+
+    /* =========================
+       SUBTITLE
+    ========================== */
+
+    .hero-subtitle{
+        max-width:850px;
+
+        font-size:19px;
+        line-height:1.9;
+
+        color:rgba(255,255,255,0.72);
+
+        margin-bottom:42px;
+
+        animation:fadeUp 1s ease;
+    }
+
+    /* =========================
+       BUTTONS
+    ========================== */
+
+    .hero-buttons{
+        display:flex;
+        gap:18px;
+        flex-wrap:wrap;
+
+        margin-top:15px;
+    }
+
+    .hero-btn{
+        padding:15px 28px;
+        border-radius:16px;
+        font-size:15px;
+        font-weight:700;
+
+        text-decoration:none;
+
+        transition:all 0.35s ease;
+
+        display:inline-flex;
+        align-items:center;
+        gap:10px;
+    }
+
+    .primary-btn{
+        background:linear-gradient(90deg,#7C5CFF,#00D4FF);
+        color:white;
+
+        box-shadow:
+        0 0 30px rgba(124,92,255,0.45);
+    }
+
+    .primary-btn:hover{
+        transform:translateY(-4px);
+        box-shadow:
+        0 0 50px rgba(124,92,255,0.7);
+    }
+
+    .secondary-btn{
+        background:rgba(255,255,255,0.05);
+        color:#e8e8ff;
+
+        border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .secondary-btn:hover{
+        background:rgba(255,255,255,0.08);
+        transform:translateY(-4px);
+    }
+
+    /* =========================
+       FEATURE GRID
+    ========================== */
+
+    .feature-grid{
+        display:grid;
+
+        grid-template-columns:
+        repeat(auto-fit,minmax(320px,1fr));
+
+        gap:24px;
+
+        margin-top:70px;
+    }
+
+    .feature-card{
+        position:relative;
+
+        background:rgba(255,255,255,0.03);
+
+        border:1px solid rgba(255,255,255,0.08);
+
+        border-radius:24px;
+
+        padding:34px;
+
+        overflow:hidden;
+
+        transition:all 0.4s ease;
+    }
+
+    .feature-card:hover{
+        transform:translateY(-10px);
+
+        border-color:rgba(124,92,255,0.35);
+
+        box-shadow:
+        0 20px 50px rgba(0,0,0,0.45),
+        0 0 40px rgba(124,92,255,0.18);
+    }
+
+    .feature-card::before{
+        content:"";
+
+        position:absolute;
+
+        top:0;
+        left:0;
+
+        width:100%;
+        height:4px;
+
+        background:linear-gradient(90deg,#7C5CFF,#00D4FF);
+
+        transform:scaleX(0);
+
+        transform-origin:left;
+
+        transition:transform 0.4s ease;
+    }
+
+    .feature-card:hover::before{
+        transform:scaleX(1);
+    }
+
+    .feature-icon{
+        font-size:42px;
+        margin-bottom:18px;
+    }
+
+    .feature-title{
+        font-size:24px;
+        font-weight:800;
+        color:white;
+        margin-bottom:14px;
+    }
+
+    .feature-desc{
+        color:rgba(255,255,255,0.68);
+        line-height:1.8;
+        font-size:15px;
+        margin-bottom:20px;
+    }
+
+    .feature-list{
+        display:flex;
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .feature-item{
+        color:#d6d9ff;
+        font-size:14px;
+        line-height:1.6;
+
+        display:flex;
+        gap:12px;
+        align-items:flex-start;
+    }
+
+    .feature-item span{
+        color:#00D4FF;
+        font-weight:800;
+    }
+
+    /* =========================
+       GUIDE SECTION
+    ========================== */
+
+    .guide-section{
+        margin-top:70px;
+    }
+
+    .guide-title{
+        font-size:34px;
+        font-weight:800;
+        color:white;
+
+        margin-bottom:30px;
+    }
+
+    .guide-grid{
+        display:grid;
+
+        grid-template-columns:
+        repeat(auto-fit,minmax(280px,1fr));
+
+        gap:20px;
+    }
+
+    .guide-card{
+        background:rgba(255,255,255,0.03);
+
+        border:1px solid rgba(255,255,255,0.07);
+
+        border-radius:20px;
+
+        padding:26px;
+
+        transition:all 0.35s ease;
+    }
+
+    .guide-card:hover{
+        transform:translateY(-8px);
+
+        border-color:rgba(0,212,255,0.25);
+
+        box-shadow:
+        0 0 30px rgba(0,212,255,0.12);
+    }
+
+    .guide-text{
+        color:#dbe0ff;
+        font-size:14px;
+        line-height:1.8;
+    }
+
+    /* =========================
+       ANIMATION
+    ========================== */
+
+    @keyframes fadeUp{
+        from{
+            opacity:0;
+            transform:translateY(20px);
+        }
+
+        to{
+            opacity:1;
+            transform:translateY(0px);
+        }
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media(max-width:900px){
+
+        .hero-container{
+            padding:45px 28px;
+        }
+
+        .logo-text{
+            font-size:3.4rem;
+        }
+
+        .hero-subtitle{
+            font-size:16px;
+        }
+    }
+    
+    /* =========================
+   STREAMLIT BUTTON UI
+    ========================= */
+
+    .stButton > button {
+
+        width: 100%;
+
+        background:
+        linear-gradient(
+            135deg,
+            #7C5CFF 0%,
+            #5B8CFF 45%,
+            #00D4FF 100%
+        );
+
+        color: white;
+
+        border: 1px solid rgba(255,255,255,0.08);
+
+        border-radius: 18px;
+
+        padding: 0.95rem 1.4rem;
+
+        font-size: 15px;
+
+        font-weight: 700;
+
+        letter-spacing: 0.3px;
+
+        position: relative;
+
+        overflow: hidden;
+
+        transition: all 0.35s ease;
+
+        box-shadow:
+        0 10px 30px rgba(124,92,255,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.12);
+
+        backdrop-filter: blur(10px);
+
+        min-height: 54px;
+    }
+
+
+    /* =========================
+    SHINE EFFECT
+    ========================= */
+
+    .stButton > button::before {
+
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        left: -120%;
+
+        width: 70%;
+        height: 100%;
+
+        background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.22),
+            transparent
+        );
+
+        transform: skewX(-20deg);
+
+        transition: all 0.7s ease;
+    }
+
+    .stButton > button:hover::before {
+
+        left: 140%;
+    }
+
+
+    /* =========================
+    HOVER
+    ========================= */
+
+    .stButton > button:hover {
+
+        transform:
+        translateY(-4px)
+        scale(1.01);
+
+        box-shadow:
+        0 18px 45px rgba(124,92,255,0.45),
+        0 0 35px rgba(0,212,255,0.25);
+
+        border-color:
+        rgba(255,255,255,0.18);
+    }
+
+
+    /* =========================
+    ACTIVE
+    ========================= */
+
+    .stButton > button:active {
+
+        transform:
+        scale(0.98);
+
+        box-shadow:
+        0 8px 20px rgba(124,92,255,0.28);
+    }
+
+
+    /* =========================
+    FOCUS
+    ========================= */
+
+    .stButton > button:focus {
+
+        outline: none !important;
+
+        border:
+        1px solid rgba(0,212,255,0.45);
+
+        box-shadow:
+        0 0 0 4px rgba(0,212,255,0.12),
+        0 12px 35px rgba(124,92,255,0.35);
+    }
+
+
+    /* =========================
+    OPTIONAL SECONDARY STYLE
+    ========================= */
+
+    div[data-testid="column"] .stButton.secondary > button {
+
+        background:
+        rgba(255,255,255,0.04);
+
+        color:
+        #e5e7ff;
+
+        border:
+        1px solid rgba(255,255,255,0.08);
+
+        box-shadow:
+        none;
+    }
+
+    div[data-testid="column"] .stButton.secondary > button:hover {
+
+        background:
+        rgba(255,255,255,0.08);
+
+        border-color:
+        rgba(124,92,255,0.25);
+
+        box-shadow:
+        0 0 25px rgba(124,92,255,0.18);
+    }
+
+    </style>
+    """, unsafe_allow_html=True)
+
+
+
+# =========================
+# HTML SECTION
+# =========================
+def landing_section1():
+
+    st.markdown("""
+    <div class="jarviscv-wrapper">
+        <div class="blur-orb orb1"></div>
+        <div class="blur-orb orb2"></div>
+        <div class="hero-container">
+            <div class="top-badge">
+                <div class="pulse-dot"></div>
+                AI Resume Intelligence Platform
+            </div>
+            <div class="logo">
+                <div class="logo-text">JarvisCV</div>
+            </div>
+            <div class="hero-subtitle">
+                Build professional, recruiter-ready resumes with AI-powered career intelligence.
+                Analyze ATS compatibility, optimize keywords, improve formatting, and generate
+                high-impact resumes designed for modern hiring systems.
+            </div>
+            <!-- FEATURE GRID -->
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <div class="feature-title">
+                        AI Resume Builder
+                    </div>
+                    <div class="feature-desc">
+                        Generate clean, modern, recruiter-focused resumes with intelligent AI assistance.
+                    </div>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <span>✓</span>
+                            Create professional resumes instantly
+                        </div>
+                        <div class="feature-item">
+                            <span>✓</span>
+                            AI-generated career descriptions
+                        </div>
+                        <div class="feature-item">
+                            <span>✓</span>
+                            Modern ATS-friendly formatting
+                        </div>
+                        <div class="feature-item">
+                            <span>✓</span>
+                            Export high-quality resumes
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-title">
+                        ATS Resume Analyzer
+                    </div>
+                    <div class="feature-desc">
+                        Upload resumes and receive intelligent ATS scoring with optimization suggestions.
+                    </div>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <span>✓</span>
+                            Instant ATS compatibility score
+                        </div>
+                        <div class="feature-item">
+                            <span>✓</span>
+                            Keyword optimization analysis
+                        </div>
+                        <div class="feature-item">
+                            <span>✓</span>
+                            Detects formatting issues
+                        </div>
+                        <div class="feature-item">
+                            <span>✓</span>
+                            AI-powered resume improvements
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- GUIDE SECTION -->
+            <div class="guide-section">
+                <div class="guide-title">
+                    Why Use JarvisCV?
+                </div>
+                <div class="guide-grid">
+                    <div class="guide-card">
+                        <div class="guide-text">
+                            🚀 Create recruiter-ready resumes optimized for modern hiring systems and ATS platforms.
+                        </div>
+                    </div>
+                    <div class="guide-card">
+                        <div class="guide-text">
+                            🧠 AI intelligently improves resume structure, keywords, formatting, and readability.
+                        </div>
+                    </div>
+                    <div class="guide-card">
+                        <div class="guide-text">
+                            🎯 Receive instant ATS scoring and identify weak areas affecting interview opportunities.
+                        </div>
+                    </div>
+                    <div class="guide-card">
+                        <div class="guide-text">
+                            ⚡ Optimize resumes for specific job roles using AI-powered career recommendations.
+                        </div>
+                    </div>
+                    <div class="guide-card">
+                        <div class="guide-text">
+                            📈 Improve recruiter visibility with intelligent keyword enhancement and content refinement.
+                        </div>
+                    </div>
+                    <div class="guide-card">
+                        <div class="guide-text">
+                            ✨ Build clean, premium-quality resumes without needing design or formatting skills.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    start_button = st.button("Get started")
+
+    return start_button
