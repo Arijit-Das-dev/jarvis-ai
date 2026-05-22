@@ -69,13 +69,15 @@ elif st.session_state.current_page == "analysis":
 
     with col1:
         
-        role = st.text_input("Enter your job role here.")
         modelGpt = MODEL_GPT()
 
         container_1 = st.container(height=300)
 
         with container_1:
 
+            role = st.text_input("Enter your job role here.")
+            st.divider()
+            
             if contents and role:
 
                 output = modelGpt.askGpt(
