@@ -20,4 +20,5 @@ chromadb
 sentence-transformers
 pypdf
 pdfplumber
+openrouter
 python -m streamlit run Backend/Features/app.py

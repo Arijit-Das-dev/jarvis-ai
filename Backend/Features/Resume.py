@@ -59,11 +59,10 @@ elif st.session_state.current_page == "analysis":
             help="Only pdf files are supported.",
             type=["pdf"]
         )
-    
+        
     with col2:
-
-        container_1 = st.container(height=300)
         pdf_parser = PDF_PARSER()
+        container_1 = st.container(height=300)
         modelGpt = MODEL_GPT()
 
         with container_1:
@@ -73,7 +72,7 @@ elif st.session_state.current_page == "analysis":
                 
                 ui.parsing_loader()
                 content = pdf_parser.extract_from_upload(upload_file=file)
-                st.success("Pdf pursed successfull")
+                st.success("Pdf parsed successfully")
                 st.divider()
 
                 st.info("Analysis", icon="ℹ️")

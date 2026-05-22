@@ -2,6 +2,7 @@ import os
 import tempfile
 import pdfplumber
 import streamlit as st
+from pypdf import PdfReader
 
 class PDF_PARSER:
 
@@ -9,7 +10,7 @@ class PDF_PARSER:
         
         self.pdf_plumber = pdfplumber
         self.temp_file = tempfile
-
+        
     """ EXTRACT TEXT FROM streamlit st.file_uploader() OUTPUT"""
     def extract_from_upload(self, upload_file) -> str:
 
@@ -33,27 +34,20 @@ class PDF_PARSER:
         return text.strip()
     
     """ RESUME METADATA """
-    def resume_Details(self, pdf_path) -> dict:
+    def resume_Details(self, uploaded_file) -> dict:
 
-        result = {
-            "total_pages":0,
+        if uploaded_file is None:
+            return {}
+        
+        reader = PdfReader(uploaded_file)
+        info = reader.metadata
+
+        details = {
+            "title": info.title,
+            "pages": len(reader.pages),
+            "created": info.creation_date
         }
 
-        with self.pdf_plumber.open(pdf_path) as pdf:
-
-            col1, col2 = st.columns(2)
-
-            total_pages = len(pdf.pages)
-
-            result["total_pages"] = total_pages
-
-            final_result = result["total_pages"]
-
-            if total_pages > 1:
-
-                with col1:
-                    st.error("Resume must contains 1 page !!!")
-        with col2:
-            st.info(f"Total Pages {final_result}.")
-
-        return final_result
+        st.info(f"Resume title : {details["title"]}")
+        st.info(f"Total number of Pages :{details["pages"]}")
+        st.info(f"Created at :{details["created"]}")
