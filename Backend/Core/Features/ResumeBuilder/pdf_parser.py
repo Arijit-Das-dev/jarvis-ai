@@ -41,6 +41,8 @@ class PDF_PARSER:
 
         with self.pdf_plumber.open(pdf_path) as pdf:
 
+            col1, col2 = st.columns(2)
+
             total_pages = len(pdf.pages)
 
             result["total_pages"] = total_pages
@@ -49,7 +51,9 @@ class PDF_PARSER:
 
             if total_pages > 1:
 
-                st.info("Resume must contains 1 page !!!")
+                with col1:
+                    st.error("Resume must contains 1 page !!!")
+        with col2:
+            st.info(f"Total Pages {final_result}.")
 
-        st.info(f"Resume contains {final_result}. number of pages.")
         return final_result              

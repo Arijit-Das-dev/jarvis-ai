@@ -65,3 +65,15 @@ elif st.session_state.current_page == "analysis":
             st.success("pdf parsed successfully")
             ui.analyzing_resume()
             pdf_parser.resume_Details(pdf_path=file)
+
+    with col1:
+        container_1 = st.container(height=300)
+
+        with container_1:
+            st.success("Container success")
+
+    with col3:
+        container_2 = st.container(height=300)
+
+        with container_2:
+            st.success("Container success")
