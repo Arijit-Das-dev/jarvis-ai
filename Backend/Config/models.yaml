@@ -22,3 +22,8 @@ LLM_MODELS:
 EMBEDDING_MODELS:
   Huggingface:
     huggingface_model: "sentence-transformers/all-MiniLM-L6-v2"
+
+TTS_ENGINE:
+  VOICE_ID: "JBFqnCBsd6RMkjVDRZzb"
+  MODEL_ID: "eleven_multilingual_v2"
+  OUTPUT_FORMAT: "mp3_44100_128"

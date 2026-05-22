@@ -13,7 +13,8 @@ class Settings:
     GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") # GEMINI
     COHERE_API_KEY = os.getenv("COHERE_API_KEY")
     GPT_API_KEY = os.getenv("GPT_API_KEY")
-    
+    ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
+
     # DATABASE (MYSQL, MONGODB)
     MONGO_DB_URL = os.getenv("MONGODB_URL") # MongoDB
     MY_SQL_HOST = os.getenv("MYSQL_HOST")

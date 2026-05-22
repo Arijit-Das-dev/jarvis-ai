@@ -24,5 +24,15 @@ class EMBEDDING_MODEL_PROVIDER():
 
    HUGGING_FACE_MODEL = CONFIG["EMBEDDING_MODELS"]["Huggingface"]["huggingface_model"]
 
+class TTS_ENGINE_PROVIDER:
+
+    with open("Backend/Config/models.yaml", "r") as file:
+        CONFIG = yaml.safe_load(file)
+
+    ELEVENLABS_MODEL_ID = CONFIG["TTS_ENGINE"]["MODEL_ID"]
+    ELEVENLABS_VOICE_ID = CONFIG["TTS_ENGINE"]["VOICE_ID"]
+    ELEVENLABS_OUTPUT_FORMAT_ID = CONFIG["TTS_ENGINE"]["OUTPUT_FORMAT"]
+
 embedding_model_provider = EMBEDDING_MODEL_PROVIDER()
 llm_service_provider = LLM_SERVICE_PROVIDER()
+elevenlabs_tts_model_provider = TTS_ENGINE_PROVIDER()
