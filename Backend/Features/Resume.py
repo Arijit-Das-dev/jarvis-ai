@@ -1,6 +1,7 @@
 import streamlit as st
 import Frontend.F_Resume as ui
 from Backend.Core.Features.ResumeBuilder.pdf_parser import PDF_PARSER
+from Backend.Services.OpenRouterClient.gpt_client import MODEL_GPT
 
 # CUSTOM CSS
 ui.inject_css()
@@ -44,6 +45,8 @@ elif st.session_state.current_page == "builder":
 # RESUME BUILDER PAGE
 elif st.session_state.current_page == "analysis":
 
+    contents = None
+
     ui.heading()
     col1, col2, col3 = st.columns(3, gap="xxsmall")
     
@@ -59,19 +62,28 @@ elif st.session_state.current_page == "analysis":
         )
         if file:
             ui.parsing_loader()
-            pdf_parser.extract_from_upload(
-                upload_file=file
-            )
+            contents = pdf_parser.extract_from_upload(upload_file=file)
             st.success("pdf parsed successfully")
             ui.analyzing_resume()
             pdf_parser.resume_Details(pdf_path=file)
 
     with col1:
+        
+        role = st.text_input("Enter your job role here.")
+        modelGpt = MODEL_GPT()
+
         container_1 = st.container(height=300)
 
         with container_1:
-            st.success("Container success")
 
+            if contents and role:
+
+                output = modelGpt.askGpt(
+                    content=contents,
+                    role=role
+                )
+                st.markdown(output)
+                
     with col3:
         container_2 = st.container(height=300)
 

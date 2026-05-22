@@ -12,6 +12,7 @@ class Settings:
     MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY") # MISTRAL
     GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") # GEMINI
     COHERE_API_KEY = os.getenv("COHERE_API_KEY")
+    GPT_API_KEY = os.getenv("GPT_API_KEY")
     
     # DATABASE (MYSQL, MONGODB)
     MONGO_DB_URL = os.getenv("MONGODB_URL") # MongoDB

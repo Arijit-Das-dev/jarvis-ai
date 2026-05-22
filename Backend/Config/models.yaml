@@ -16,7 +16,9 @@ LLM_MODELS:
     cohere: "command-r-08-2024"
     cohere2: "command-a-03-2025"
 
-EMBEDDING_MODELS:
+  OPEN_ROUTER:
+    GPT: "openai/gpt-oss-120b:free"
 
+EMBEDDING_MODELS:
   Huggingface:
     huggingface_model: "sentence-transformers/all-MiniLM-L6-v2"

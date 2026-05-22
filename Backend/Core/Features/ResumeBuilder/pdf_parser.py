@@ -56,4 +56,4 @@ class PDF_PARSER:
         with col2:
             st.info(f"Total Pages {final_result}.")
 
-        return final_result              
+        return final_result
