@@ -1,5 +1,6 @@
 import streamlit as st
 import Frontend.F_Resume as ui
+import re
 from Backend.Core.Features.ResumeBuilder.pdf_parser import PDF_PARSER
 from Backend.Services.OpenRouterClient.gpt_client import MODEL_GPT
 
@@ -45,49 +46,52 @@ elif st.session_state.current_page == "builder":
 # RESUME BUILDER PAGE
 elif st.session_state.current_page == "analysis":
 
-    contents = None
-
     ui.heading()
     col1, col2, col3 = st.columns(3, gap="xxsmall")
-    
-    with col2:
-        
-        # PDF PARSER MODULE
-        pdf_parser = PDF_PARSER()
 
-        file = st.file_uploader(
-            "Upload resume",
-            help="Only pdf files are supported",
-            type=["pdf"]
-        )
-        if file:
-            ui.parsing_loader()
-            contents = pdf_parser.extract_from_upload(upload_file=file)
-            st.success("pdf parsed successfully")
-            ui.analyzing_resume()
-            pdf_parser.resume_Details(pdf_path=file)
+    if "output" not in st.session_state:
+        st.session_state.output = None
 
     with col1:
-        
-        modelGpt = MODEL_GPT()
+
+        file = st.file_uploader(
+            label="Upload your resume here",
+            help="Only pdf files are supported.",
+            type=["pdf"]
+        )
+    
+    with col2:
 
         container_1 = st.container(height=300)
+        pdf_parser = PDF_PARSER()
+        modelGpt = MODEL_GPT()
 
         with container_1:
 
-            role = st.text_input("Enter your job role here.")
-            st.divider()
-            
-            if contents and role:
+            role = st.text_input("Enter your job role")
+            if st.button("Start analyzing"):
+                
+                ui.parsing_loader()
+                content = pdf_parser.extract_from_upload(upload_file=file)
+                st.success("Pdf pursed successfull")
+                st.divider()
 
+                st.info("Analysis", icon="ℹ️")
                 output = modelGpt.askGpt(
-                    content=contents,
+                    content = content,
                     role=role
                 )
+                st.session_state.output = output
                 st.markdown(output)
-                
+    
     with col3:
+
         container_2 = st.container(height=300)
 
         with container_2:
-            st.success("Container success")
+            output = st.session_state.get("output")
+
+            if output:
+                match = re.search(r'ATS SCORE:\s*(\d+)', output)
+                ats_score = int(match.group(1)) if match else 0
+                ui.show_ats_score(score=ats_score)

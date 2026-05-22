@@ -1034,11 +1034,91 @@ def inject_css():
         opacity:0.85;
         letter-spacing:0.5px;
     }
-                
+
+    .ats-card{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    animation:fadeIn 0.6s ease-in-out;
+    }
+
+    .ats-circle{
+        width:140px;
+        height:140px;
+        border-radius:50%;
+        border:8px solid #00ff99;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:38px;
+        font-weight:bold;
+        color:white;
+        box-shadow:0 0 25px #00ff99;
+        animation:pulse 2s infinite;
+    }
+
+    .ats-card p{
+        margin-top:15px;
+        font-size:18px;
+        font-weight:600;
+        color:white;
+    }
+
+    @keyframes pulse{
+        0%{
+            transform:scale(1);
+        }
+        50%{
+            transform:scale(1.05);
+        }
+        100%{
+            transform:scale(1);
+        }
+    }
+
+    @keyframes fadeIn{
+        from{
+            opacity:0;
+            transform:translateY(20px);
+        }
+
+        to{
+            opacity:1;
+            transform:translateY(0);
+        }
+    }     
+    /* TEXT INPUT MAIN BOX */
+    div[data-baseweb="input"] > div {
+        background: rgba(20, 20, 20, 0.85);
+        border: 1px solid rgba(0, 255, 153, 0.3);
+        border-radius: 10px;
+        padding: 8px;
+        box-shadow: 0 0 10px rgba(0, 255, 153, 0.15);
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* INPUT FIELD TEXT */
+    input {
+        color: white !important;
+        font-size: 16px !important;
+        background: transparent !important;
+    }
+
+    /* FOCUS EFFECT */
+    div[data-baseweb="input"] > div:focus-within {
+        border: 1px solid #00ff99;
+        box-shadow: 0 0 18px #00ff99;
+        transform: scale(1.01);
+    }
+
+    /* PLACEHOLDER STYLE */
+    input::placeholder {
+        color: rgba(255, 255, 255, 0.4) !important;
+    }
     </style>
     """, unsafe_allow_html=True)
-
-
 
 # =========================
 # HTML SECTION
@@ -1303,3 +1383,14 @@ def analyzing_resume():
 
     t.sleep(5)
     placeholder.empty()
+
+def show_ats_score(score):
+
+    st.markdown(f"""
+    <div class="ats-card">
+        <div class="ats-circle">
+            <span>{score}/100</span>
+        </div>
+        <p>ATS SCORE</p>
+    </div>
+    """, unsafe_allow_html=True)
