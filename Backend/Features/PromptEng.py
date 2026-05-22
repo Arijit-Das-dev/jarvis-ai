@@ -6,10 +6,6 @@ from DB.MongoDB.PromptEngDB import save_user_query, save_gemini_response
 
 ui.inject_css()
 
-st.set_page_config(
-    page_title="PromptLab",
-)
-
 # ---------- Session variables (TOP) ----------
 if "user_id" not in st.session_state:
     st.session_state.user_id = str(uuid.uuid4())
