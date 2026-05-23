@@ -16,6 +16,4 @@ def playAudio(content: str):
         output_format=elevenlabs_tts_model_provider.ELEVENLABS_OUTPUT_FORMAT_ID
     )
 
-    startAudio = play(audio)
-
-    return startAudio
+    play(audio)
