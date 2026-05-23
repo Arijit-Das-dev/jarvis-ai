@@ -68,21 +68,24 @@ elif st.session_state.current_page == "analysis":
         with container_1:
 
             role = st.text_input("Enter your job role")
-            if st.button("Start analyzing"):
-                
-                ui.parsing_loader()
-                content = pdf_parser.extract_from_upload(upload_file=file)
-                st.success("Pdf parsed successfully")
-                st.divider()
 
-                st.info("Analysis", icon="ℹ️")
-                output = modelGpt.askGpt(
-                    content = content,
-                    role=role
-                )
-                st.session_state.output = output
-                st.markdown(output)
-    
+            if role:
+                analyse = st.button("Start analyzing")
+                
+                if analyse:
+                    ui.parsing_loader()
+                    content = pdf_parser.extract_from_upload(upload_file=file)
+                    st.success("Pdf parsed successfully")
+                    st.divider()
+
+                    st.info("Analysis", icon="ℹ️")
+                    output = modelGpt.askGpt(
+                        content = content,
+                        role=role
+                    )
+                    st.session_state.output = output
+                    st.markdown(output)
+        
     with col3:
 
         container_2 = st.container(height=300)
