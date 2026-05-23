@@ -47,6 +47,7 @@ elif st.session_state.current_page == "builder":
 elif st.session_state.current_page == "analysis":
 
     ui.heading()
+    st.divider()
     col1, col2, col3 = st.columns(3, gap="xxsmall")
 
     if "output" not in st.session_state:
