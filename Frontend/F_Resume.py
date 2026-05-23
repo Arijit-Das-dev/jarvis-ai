@@ -1014,8 +1014,13 @@ def inject_css():
 
     .jarvis-header{
         text-align:center;
-        margin-top:40px;
-        font-family:'Inter',sans-serif;
+        margin-top:-65px;
+        margin-bottom:40px;  /* ADD THIS */
+
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
     }
 
     .jarvis-title{
@@ -1028,7 +1033,7 @@ def inject_css():
     }
 
     .jarvis-subtitle{
-        margin-top:8px;
+        margin-top:10px;
         font-size:16px;
         color:#c4b5fd;
         opacity:0.85;
@@ -1116,6 +1121,132 @@ def inject_css():
     /* PLACEHOLDER STYLE */
     input::placeholder {
         color: rgba(255, 255, 255, 0.4) !important;
+    }
+    
+    /* =========================
+       SUBHEADER STYLE
+    ========================== */
+
+    .jarvis-subheader {
+        position: relative;
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        margin-bottom: 18px;
+        padding-left: 18px;
+
+        background: linear-gradient(
+            90deg,
+            #ffffff 0%,
+            #d6ccff 35%,
+            #8b5cf6 70%,
+            #00d4ff 100%
+        );
+
+        background-size: 300% 300%;
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        animation:
+            gradientFlow 6s ease infinite,
+            fadeSlideUp 0.8s ease;
+    }
+
+    /* glowing left accent */
+    .jarvis-subheader::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 5px;
+        height: 80%;
+
+        border-radius: 30px;
+
+        background: linear-gradient(
+            180deg,
+            #7c5cff,
+            #00d4ff
+        );
+
+        box-shadow:
+            0 0 12px rgba(124,92,255,0.8),
+            0 0 25px rgba(0,212,255,0.4);
+
+        animation: glowPulse 2.5s ease infinite;
+    }
+
+    /* animated underline */
+    .jarvis-subheader::after {
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        left: 18px;
+
+        width: 120px;
+        height: 2px;
+        border-radius: 50px;
+
+        background: linear-gradient(
+            90deg,
+            rgba(124,92,255,0),
+            #7c5cff,
+            #00d4ff,
+            rgba(0,212,255,0)
+        );
+
+        background-size: 200% 100%;
+
+        animation: lineMove 4s linear infinite;
+    }
+
+    /* =========================
+       ANIMATIONS
+    ========================== */
+
+    @keyframes gradientFlow {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    @keyframes glowPulse {
+        0%,100% {
+            opacity: 1;
+            transform: translateY(-50%) scaleY(1);
+        }
+        50% {
+            opacity: 0.7;
+            transform: translateY(-50%) scaleY(1.15);
+        }
+    }
+
+    @keyframes lineMove {
+        0% {
+            background-position: 0% 50%;
+        }
+        100% {
+            background-position: 200% 50%;
+        }
+    }
+
+    @keyframes fadeSlideUp {
+        from {
+            opacity: 0;
+            transform: translateY(12px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0px);
+        }
     }
     </style>
     """, unsafe_allow_html=True)
@@ -1394,3 +1525,14 @@ def show_ats_score(score):
         <p>ATS SCORE</p>
     </div>
     """, unsafe_allow_html=True)
+
+def subheader(text):
+
+    st.markdown(
+        f'''
+        <div class="jarvis-subheader">
+            {text}
+        </div>
+        ''',
+        unsafe_allow_html=True
+    )    

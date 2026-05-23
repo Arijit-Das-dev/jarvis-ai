@@ -54,13 +54,16 @@ elif st.session_state.current_page == "analysis":
 
     with col1:
 
+        ui.subheader(text="Upload File")
         file = st.file_uploader(
             label="Upload your resume here",
             help="Only pdf files are supported.",
             type=["pdf"]
         )
-        
+    
     with col2:
+
+        ui.subheader(text="Analyze resume")
         pdf_parser = PDF_PARSER()
         container_1 = st.container(height=300)
         modelGpt = MODEL_GPT()
@@ -88,8 +91,8 @@ elif st.session_state.current_page == "analysis":
         
     with col3:
 
+        ui.subheader(text="ATS SCORE")
         container_2 = st.container(height=300)
-
         with container_2:
             output = st.session_state.get("output")
 
