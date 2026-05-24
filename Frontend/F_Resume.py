@@ -1535,4 +1535,412 @@ def subheader(text):
         </div>
         ''',
         unsafe_allow_html=True
-    )    
+    )
+
+def inject_css_2():
+    st.markdown("""
+    <style>
+
+    /* =====================================================
+       GLOBAL
+    ===================================================== */
+    html, body, [class*="css"] {
+        font-family: 'Inter', sans-serif;
+    }
+
+    .stApp {
+        background: #0f1117;
+        color: #ffffff;
+    }
+
+    section[data-testid="stSidebar"] {
+        background-color: #111827;
+        border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* Hide Streamlit Branding */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+
+    /* =====================================================
+       MAIN CONTAINER
+    ===================================================== */
+    .main-container {
+        padding: 2rem;
+        border-radius: 22px;
+        background: linear-gradient(
+            145deg,
+            rgba(255,255,255,0.03),
+            rgba(255,255,255,0.01)
+        );
+        border: 1px solid rgba(255,255,255,0.08);
+        backdrop-filter: blur(10px);
+        margin-bottom: 2rem;
+    }
+
+    /* =====================================================
+       HERO SECTION
+    ===================================================== */
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 10px;
+        color: white;
+    }
+
+    .hero-subtitle {
+        color: #9ca3af;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .highlight {
+        color: #8b5cf6;
+    }
+
+    /* =====================================================
+       TEMPLATE CARDS
+    ===================================================== */
+    .template-card {
+        background: #161b22;
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 18px;
+        padding: 20px;
+        transition: 0.3s ease;
+        text-align: center;
+        height: 320px;
+    }
+
+    .template-card:hover {
+        transform: translateY(-6px);
+        border: 1px solid #8b5cf6;
+        box-shadow: 0 0 25px rgba(139,92,246,0.3);
+    }
+
+    .template-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+        color: white;
+    }
+
+    .resume-preview {
+        background: linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #d1d5db 100%
+        );
+        border-radius: 10px;
+        height: 200px;
+        margin-bottom: 15px;
+    }
+
+    /* =====================================================
+       SECTION BOX
+    ===================================================== */
+    .section-box {
+        background: #161b22;
+        padding: 25px;
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.06);
+        margin-bottom: 25px;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #ffffff;
+        border-left: 4px solid #8b5cf6;
+        padding-left: 14px;
+    }
+
+    .section-desc {
+        color: #9ca3af;
+        margin-bottom: 1rem;
+    }
+
+    /* =====================================================
+       STREAMLIT INPUTS
+    ===================================================== */
+
+    /* TEXT INPUT */
+    .stTextInput input {
+        background-color: #111827 !important;
+        color: white !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(255,255,255,0.08) !important;
+        padding: 14px !important;
+        font-size: 15px !important;
+    }
+
+    .stTextInput input:focus {
+        border: 1px solid #8b5cf6 !important;
+        box-shadow: 0 0 0 2px rgba(139,92,246,0.25) !important;
+    }
+
+    /* TEXT AREA */
+    .stTextArea textarea {
+        background-color: #111827 !important;
+        color: white !important;
+        border-radius: 14px !important;
+        border: 1px solid rgba(255,255,255,0.08) !important;
+        padding: 14px !important;
+    }
+
+    .stTextArea textarea:focus {
+        border: 1px solid #8b5cf6 !important;
+        box-shadow: 0 0 0 2px rgba(139,92,246,0.25) !important;
+    }
+
+    /* DATE INPUT */
+    .stDateInput input {
+        background-color: #111827 !important;
+        color: white !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(255,255,255,0.08) !important;
+    }
+
+    /* BUTTON */
+    .stButton > button {
+        width: 100%;
+        border-radius: 14px;
+        height: 50px;
+        border: none;
+        background: linear-gradient(
+            135deg,
+            #8b5cf6,
+            #6366f1
+        );
+        color: white;
+        font-size: 16px;
+        font-weight: 700;
+        transition: 0.3s ease;
+    }
+
+    .stButton > button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(139,92,246,0.35);
+    }
+
+    /* DOWNLOAD BUTTON */
+    .stDownloadButton > button {
+        width: 100%;
+        border-radius: 14px;
+        height: 50px;
+        border: none;
+        background: linear-gradient(
+            135deg,
+            #10b981,
+            #059669
+        );
+        color: white;
+        font-size: 16px;
+        font-weight: 700;
+        transition: 0.3s ease;
+    }
+
+    .stDownloadButton > button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(16,185,129,0.35);
+    }
+
+    /* =====================================================
+       LABELS
+    ===================================================== */
+    label {
+        color: #e5e7eb !important;
+        font-weight: 600 !important;
+    }
+
+    /* =====================================================
+       SCROLLBAR
+    ===================================================== */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #111827;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #8b5cf6;
+        border-radius: 10px;
+    }
+
+    </style>
+    """, unsafe_allow_html=True)
+
+# =========================================================
+# HERO SECTION
+# =========================================================
+def hero_section():
+
+    st.markdown("""
+    <div class="main-container">
+
+        <div class="hero-title">
+            Build Your <span class="highlight">Professional Resume</span>
+        </div>
+
+        <div class="hero-subtitle">
+            Create ATS-friendly resumes with beautiful templates
+            in just a few minutes.
+        </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+def template_section():
+
+    st.markdown("""
+    <div class="section-box">
+
+        <div class="section-title">
+            Choose Resume Template
+        </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.markdown("""
+        <div class="template-card">
+            <div class="template-title">Minimal</div>
+            <div class="resume-preview"></div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col2:
+        st.markdown("""
+        <div class="template-card">
+            <div class="template-title">Classic</div>
+            <div class="resume-preview"></div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col3:
+        st.markdown("""
+        <div class="template-card">
+            <div class="template-title">Modern</div>
+            <div class="resume-preview"></div>
+        </div>
+        """, unsafe_allow_html=True)
+
+# =========================================================
+# PROFESSIONAL SUMMARY
+# =========================================================
+def Personal_Information():
+
+    st.markdown("""
+    <div class="section-box">
+
+        <div class="section-title">
+            Personal Information
+        </div>
+
+        <div class="section-desc">
+            Enter your personal details.
+        </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+# =========================================================
+# WORK EXPERIENCE
+# =========================================================
+def Work_Experience():
+
+    st.markdown("""
+    <div class="section-box">
+
+        <div class="section-title">
+            Work Experience
+        </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+# =========================================================
+# EDUCATION
+# =========================================================
+def Education():
+
+    st.markdown("""
+    <div class="section-box">
+
+        <div class="section-title">
+            Education
+        </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+def Technical_Skills():
+
+    st.markdown("""
+    <div class="section-box">
+
+        <div class="section-title">
+            Technical Skills
+        </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+# =========================================================
+# PROJECTS
+# =========================================================
+def Projects():
+
+    st.markdown("""
+    <div class="section-box">
+
+        <div class="section-title">
+            Projects
+        </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+# =========================================================
+# CERTIFICATIONS
+# =========================================================
+def Certifications():
+
+    st.markdown("""
+    <div class="section-box">
+
+        <div class="section-title">
+            Certifications
+        </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+# =========================================================
+# DOWNLOAD SECTION
+# =========================================================
+def Download_Section():
+
+    st.markdown("""
+    <div class="section-box">
+
+        <div class="section-title">
+            Export Resume
+        </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.download_button(
+        label="Download Resume PDF",
+        data="Sample Resume",
+        file_name="resume.pdf",
+        mime="application/pdf"
+    )

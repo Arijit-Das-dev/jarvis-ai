@@ -1,8 +1,13 @@
 import re
+import os
+import sys
 import streamlit as st
 import Frontend.F_Resume as ui
 from Backend.Core.Features.ResumeBuilder.pdf_parser import PDF_PARSER
 from Backend.Services.OpenRouterClient.gpt_client import MODEL_GPT
+from src.ResumeGeneratorEssentials.classic_resume import generate_classic_resume
+from src.ResumeGeneratorEssentials.minimal_resume import generate_minimal_resume
+from src.ResumeGeneratorEssentials.modern_resume import generate_modern_resume
 
 # CUSTOM CSS
 ui.inject_css()
