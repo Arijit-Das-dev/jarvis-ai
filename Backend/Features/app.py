@@ -14,8 +14,8 @@ features = [
     st.Page("CodeEditor.py", title="Code/Debug", icon=":material/code:"),
     st.Page("Image.py", title="ImageLab", icon=":material/image:"),
     st.Page("PromptEng.py", title="PromptLab", icon=":material/edit_note:"),
-    st.Page("Scholar.py", title="Jarvis Scholar", icon=":material/search:"),
-    st.Page("Resume.py", title="Jarvis Resume", icon=":material/draft:")
+    st.Page("Scholar.py", title="Scholar", icon=":material/search:"),
+    st.Page("Resume.py", title="Resume", icon=":material/draft:")
 ]
 
 # -------------------------------
@@ -39,7 +39,15 @@ pages = {
         )
     ],
 
-    "Features": features
+    "Features": features,
+
+    "Settings":[
+        st.Page(
+            "settings/settingsMaterials.py",
+            title="Settings",
+            icon=":material/settings:"
+        )
+    ]
 }
 
 # -------------------------------
