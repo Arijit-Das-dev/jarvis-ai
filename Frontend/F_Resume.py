@@ -1770,6 +1770,73 @@ def inject_css_2():
         background: #8b5cf6;
         border-radius: 10px;
     }
+    
+    /* =====================================================
+    SELECT BOX
+    ===================================================== */
+
+    /* Main Selectbox Container */
+    .stSelectbox > div > div {
+        background-color: #111827 !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(255,255,255,0.08) !important;
+        min-height: 50px !important;
+        transition: 0.3s ease;
+    }
+
+    /* Hover Effect */
+    .stSelectbox > div > div:hover {
+        border: 1px solid #8b5cf6 !important;
+        box-shadow: 0 0 0 2px rgba(139,92,246,0.15);
+    }
+
+    /* Selected Text */
+    .stSelectbox div[data-baseweb="select"] > div {
+        color: white !important;
+        font-size: 15px !important;
+        padding-left: 6px;
+    }
+
+    /* Dropdown Icon */
+    .stSelectbox svg {
+        fill: #8b5cf6 !important;
+    }
+
+    /* Dropdown Popup */
+    div[role="listbox"] {
+        background-color: #111827 !important;
+        border: 1px solid rgba(255,255,255,0.08) !important;
+        border-radius: 12px !important;
+        padding: 6px !important;
+    }
+
+    /* Dropdown Options */
+    div[role="option"] {
+        background-color: transparent !important;
+        color: white !important;
+        border-radius: 10px !important;
+        margin-bottom: 4px;
+        transition: 0.2s ease;
+    }
+
+    /* Hovered Option */
+    div[role="option"]:hover {
+        background-color: rgba(139,92,246,0.18) !important;
+        color: #ffffff !important;
+    }
+
+    /* Selected Option */
+    div[aria-selected="true"] {
+        background-color: #8b5cf6 !important;
+        color: white !important;
+    }
+
+    /* Label */
+    .stSelectbox label {
+        color: #e5e7eb !important;
+        font-weight: 600 !important;
+        margin-bottom: 8px !important;
+    }
 
     </style>
     """, unsafe_allow_html=True)
@@ -1781,16 +1848,13 @@ def hero_section():
 
     st.markdown("""
     <div class="main-container">
-
         <div class="hero-title">
             Build Your <span class="highlight">Professional Resume</span>
         </div>
-
         <div class="hero-subtitle">
             Create ATS-friendly resumes with beautiful templates
             in just a few minutes.
         </div>
-
     </div>
     """, unsafe_allow_html=True)
 
@@ -1798,11 +1862,9 @@ def template_section():
 
     st.markdown("""
     <div class="section-box">
-
         <div class="section-title">
             Choose Resume Template
         </div>
-
     </div>
     """, unsafe_allow_html=True)
 
@@ -1839,15 +1901,9 @@ def Personal_Information():
 
     st.markdown("""
     <div class="section-box">
-
         <div class="section-title">
             Personal Information
         </div>
-
-        <div class="section-desc">
-            Enter your personal details.
-        </div>
-
     </div>
     """, unsafe_allow_html=True)
 
@@ -1858,11 +1914,9 @@ def Work_Experience():
 
     st.markdown("""
     <div class="section-box">
-
         <div class="section-title">
             Work Experience
         </div>
-
     </div>
     """, unsafe_allow_html=True)
 
@@ -1873,11 +1927,9 @@ def Education():
 
     st.markdown("""
     <div class="section-box">
-
         <div class="section-title">
             Education
         </div>
-
     </div>
     """, unsafe_allow_html=True)
 
@@ -1885,11 +1937,9 @@ def Technical_Skills():
 
     st.markdown("""
     <div class="section-box">
-
         <div class="section-title">
             Technical Skills
         </div>
-
     </div>
     """, unsafe_allow_html=True)
 
@@ -1900,11 +1950,9 @@ def Projects():
 
     st.markdown("""
     <div class="section-box">
-
         <div class="section-title">
             Projects
         </div>
-
     </div>
     """, unsafe_allow_html=True)
 
@@ -1915,11 +1963,9 @@ def Certifications():
 
     st.markdown("""
     <div class="section-box">
-
         <div class="section-title">
             Certifications
         </div>
-
     </div>
     """, unsafe_allow_html=True)
 
@@ -1930,11 +1976,9 @@ def Download_Section():
 
     st.markdown("""
     <div class="section-box">
-
         <div class="section-title">
             Export Resume
         </div>
-
     </div>
     """, unsafe_allow_html=True)
 
