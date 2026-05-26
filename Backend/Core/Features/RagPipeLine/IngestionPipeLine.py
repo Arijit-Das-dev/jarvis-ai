@@ -56,11 +56,12 @@ class INGESTION_PIPELINE_MODEL:
             document.page_content = " ".join(document.page_content.split())
 
             print(f"Page number : {i}")
-            print(f"SOURCE FILE : {source}")
+            print(f"SOURCE FILE : {document.metadata["source"]}")
             print(f"Page content : {document.page_content}")
             print(f"FILE NAME : {document.metadata["file_name"]}\n\n\n")
 
         """ LOADED SUCCESSFULLY """
+        print(f"{file_path} : {document.metadata["source"]}")
         print("="*50)
         print(f"{file_path} LOADED SUCCESSFULLY")
         print("="*50)
