@@ -24,30 +24,47 @@ class INGESTION_PIPELINE_MODEL:
             loader_cls=PyPDFLoader         
         )
 
-        # load all docs [FOLDERS in cwd] 
+        # List of document objects
+        """
+        documents = [
+            Document(Page1 of xFile),
+            Document(Page2 of xFile),
+            Document(Page3 of xFile),
+
+            Document(Page1 of yFile),
+            Document(Page2 of yFile),
+            Document(Page3 of yFile)
+        ]
+        """
         documents = loader.load()
 
         # checking if any files exists inside that folder
         if not documents:
             raise ValueError("No pdf found in that Folder")
-        
+
         # inserting the basic info with the documents into the files
-        for files in documents:
-            source = files.metadata.get("source", "")
-            files.metadata["file_name"] = os.path.basename(source)
-        
+        for document in documents:
+            source = document.metadata.get("source", "")
+            document.metadata["file_name"] = os.path.basename(source)
+
         # Printing all the files inside that document
-        for i, files in enumerate(documents, 1):
-            print(f"File number : {i}")
+        for i, document in enumerate(documents, 1):
+
+            # Cleaning page content -> texts inside that pages
+            document.page_content = document.page_content.strip()
+            document.page_content = document.page_content.replace("\n", " ")
+            document.page_content = " ".join(document.page_content.split())
+
+            print(f"Page number : {i}")
             print(f"SOURCE FILE : {source}")
-            print(f"FILE NAME : {files.metadata["file_name"]}")
+            print(f"Page content : {document.page_content}")
+            print(f"FILE NAME : {document.metadata["file_name"]}\n\n\n")
 
         """ LOADED SUCCESSFULLY """
+        print("="*50)
         print(f"{file_path} LOADED SUCCESSFULLY")
         print("="*50)
-        print("="*50)
         print()
-
         return documents
     
     # =================
