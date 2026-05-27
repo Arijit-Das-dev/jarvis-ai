@@ -1,8 +1,14 @@
+# ESSENTIALS
 import os
 import re
 import unicodedata
+
+# ======================
+# LANGCHAIN ESSENTIALS
+# ======================
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_experimental.text_splitter import SemanticChunker
 from Backend.Core.Features.LLmModelCore.llmService import embedding_model_provider
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
