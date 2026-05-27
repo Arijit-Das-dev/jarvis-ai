@@ -72,7 +72,6 @@ class INGESTION_PIPELINE_MODEL:
             print(f"FILE NAME : {document.metadata["file_name"]}\n\n\n")
 
         """ LOADED SUCCESSFULLY """
-        print(f"{file_path} : {document.metadata["source"]}")
         print("="*50)
         print(f"{file_path} LOADED SUCCESSFULLY")
         print("="*50)
