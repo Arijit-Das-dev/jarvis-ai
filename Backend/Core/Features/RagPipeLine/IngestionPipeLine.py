@@ -98,12 +98,13 @@ class INGESTION_PIPELINE_MODEL:
             chunk.metadata["chunk_id"] = i
             chunk.metadata["length"] = len(chunk.page_content)
 
-        for i, chunk in enumerate(chunks[:6]):
+        for i, chunk in enumerate(chunks):
             print("="*60)
             print(f"CHUNK ID : {chunk.metadata["chunk_id"]}")
             print(f"CHUNK LENGTH : {chunk.metadata["length"]}")
             print(f"CHUNK SOURCE : {chunk.metadata.get("source")}")
             print(f"CHUNK PAGE CONTENT : {chunk.page_content}")
+            print("="*60)
 
         print(f"TOTAL CHUNKS CREATED : {len(chunks)}")
         return chunks

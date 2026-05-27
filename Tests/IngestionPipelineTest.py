@@ -5,7 +5,8 @@ ipm = INGESTION_PIPELINE_MODEL()
 def test():
 
     document = ipm.load_all_docs(file_path="Assets/pdf") # load all docs
-    return document
+    chunks = ipm.text_to_chunks(document)
+    return chunks
 
 if __name__ == "__main__":
     test()
