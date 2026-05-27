@@ -89,30 +89,38 @@ class INGESTION_PIPELINE_MODEL:
     # =================
     def text_to_chunks(self, documents):
 
-        print("\n SPLITTING PDFs INTO CHUNKS")
+        print("\nSPLITTING PDFs INTO CHUNKS")
 
         splitter = RecursiveCharacterTextSplitter(
-            chunk_size = 800,
-            chunk_overlap = 150,
-            separators=["\n\n", "\n", " ", ""]
+            chunk_size=800,
+            chunk_overlap=150,
+            separators=["\n\n", "\n", ".", " "]
         )
 
         chunks = splitter.split_documents(documents)
 
-        for i, chunk in enumerate(chunks):
+        for i, chunk in enumerate(chunks, 1):
 
-            chunk.metadata["chunk_id"] = i
+            source = chunk.metadata.get("source", "unknown")
+
+            chunk.metadata["chunk_id"] = f"{source}_chunk_{i}"
             chunk.metadata["length"] = len(chunk.page_content)
 
-        for i, chunk in enumerate(chunks):
-            print("="*60)
-            print(f"CHUNK ID : {chunk.metadata["chunk_id"]}")
-            print(f"CHUNK LENGTH : {chunk.metadata["length"]}")
-            print(f"CHUNK SOURCE : {chunk.metadata.get("source")}")
+            # DO NOT overwrite real page number
+            # chunk.metadata["page"] already exists
+
+        for chunk in chunks:
+
+            print("=" * 60)
+            print(f"CHUNK ID : {chunk.metadata['chunk_id']}")
+            print(f"CHUNK FROM PAGE : {chunk.metadata.get('page', 'N/A')}")
+            print(f"CHUNK LENGTH : {chunk.metadata['length']}")
+            print(f"CHUNK SOURCE : {chunk.metadata.get('source')}")
             print(f"CHUNK PAGE CONTENT : {chunk.page_content}")
-            print("="*60)
+            print("=" * 60)
 
         print(f"TOTAL CHUNKS CREATED : {len(chunks)}")
+
         return chunks
     
     # ======================
