@@ -1,4 +1,6 @@
 import os
+import re
+import unicodedata
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from Backend.Core.Features.LLmModelCore.llmService import embedding_model_provider
@@ -51,9 +53,18 @@ class INGESTION_PIPELINE_MODEL:
         for i, document in enumerate(documents, 1):
 
             # Cleaning page content -> texts inside that pages
-            document.page_content = document.page_content.strip()
-            document.page_content = document.page_content.replace("\n", " ")
-            document.page_content = " ".join(document.page_content.split())
+            text = document.page_content
+
+            # 1. Unicode cleanup FIRST
+            text = unicodedata.normalize('NFKC', text)
+
+            # 2. Fix hyphen line breaks BEFORE removing newlines
+            text = re.sub(r"-\s*\n\s*", "", text)
+
+            # 3. Normalize whitespace (handles \n, spaces, tabs all together)
+            text = " ".join(text.split())
+
+            document.page_content = text
 
             print(f"Page number : {i}")
             print(f"SOURCE FILE : {document.metadata["source"]}")
