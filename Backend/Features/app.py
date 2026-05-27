@@ -9,17 +9,13 @@ style1()
 # -------------------------------
 # FEATURE GROUP
 # -------------------------------
-features_for_devs = [
+features = [
     st.Page("CodeEditor.py", title="Code/Debug", icon=":material/code:"),
     st.Page("PromptEng.py", title="PromptLab", icon=":material/edit_note:"),
     st.Page("Scholar.py", title="Scholar", icon=":material/search:"),
-    st.Page("Resume.py", title="Resume", icon=":material/draft:")
-]
-
-features_for_all = [
+    st.Page("Resume.py", title="Resume", icon=":material/draft:"),
     st.Page("main.py", title="Assistant", icon=":material/smart_toy:"),
-    st.Page("Image.py", title="ImageLab", icon=":material/image:"),
-
+    st.Page("Image.py", title="ImageLab", icon=":material/image:")
 ]
 # -------------------------------
 # MAIN NAVIGATION
@@ -42,8 +38,7 @@ pages = {
         )
     ],
 
-    "For Developers":features_for_devs,
-    "For Everyone" : features_for_all,
+    "Features":features,
 
     "Settings":[
         st.Page(

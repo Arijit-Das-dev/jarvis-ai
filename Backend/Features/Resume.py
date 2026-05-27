@@ -4,7 +4,7 @@ import sys
 import streamlit as st
 import Frontend.F_Resume as ui
 from Backend.Core.Features.ResumeBuilder.pdf_parser import PDF_PARSER
-from Backend.Services.OpenRouterClient.gpt_client import MODEL_GPT
+from Backend.Services.OpenRouterClient.ResumeAnalysis.openai_client import MODEL_GPT
 
 # CUSTOM CSS
 ui.inject_css()

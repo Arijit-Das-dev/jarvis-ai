@@ -6,10 +6,6 @@ import time as t
 # =========================
 def inject_css():
 
-    st.set_page_config(
-        layout="wide"
-    )
-
     st.markdown("""
     <style>
 
@@ -1561,7 +1557,6 @@ def inject_css_2():
     /* Hide Streamlit Branding */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
-    header {visibility: hidden;}
 
     /* =====================================================
        MAIN CONTAINER

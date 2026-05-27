@@ -10,7 +10,7 @@ class MODEL_GPT:
         self.API_KEY = settings.GPT_API_KEY
         self.MODEL = llm_service_provider.MODEL_GPT
 
-        root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+        root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", ".."))
         prompt_path = os.path.join(root_dir, "Prompt", "gptPrompt.txt")
 
         with open(prompt_path, "r", encoding="utf-8") as f:
