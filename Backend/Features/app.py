@@ -7,7 +7,7 @@ style1()
 # -------------------------------
 
 # -------------------------------
-# FEATURE GROUP
+# FEATURE GROUP 1
 # -------------------------------
 features_for_devs = [
     st.Page("CodeEditor.py", title="Code/Debug", icon=":material/code:"),
@@ -16,11 +16,15 @@ features_for_devs = [
     st.Page("Resume.py", title="Resume", icon=":material/draft:")
 ]
 
+# -------------------------------
+# FEATURE GROUP 2
+# -------------------------------
 features_for_everyone = [
     
     st.Page("main.py", title="Assistant", icon=":material/smart_toy:"),
     st.Page("Image.py", title="ImageLab", icon=":material/image:")
 ]
+
 # -------------------------------
 # MAIN NAVIGATION
 # -------------------------------

@@ -1657,47 +1657,6 @@ def inject_css_2():
         margin-bottom: 1rem;
     }
 
-    /* =====================================================
-       STREAMLIT INPUTS
-    ===================================================== */
-
-    /* TEXT INPUT */
-    .stTextInput input {
-        background-color: #111827 !important;
-        color: white !important;
-        border-radius: 12px !important;
-        border: 1px solid rgba(255,255,255,0.08) !important;
-        padding: 14px !important;
-        font-size: 15px !important;
-    }
-
-    .stTextInput input:focus {
-        border: 1px solid #8b5cf6 !important;
-        box-shadow: 0 0 0 2px rgba(139,92,246,0.25) !important;
-    }
-
-    /* TEXT AREA */
-    .stTextArea textarea {
-        background-color: #111827 !important;
-        color: white !important;
-        border-radius: 14px !important;
-        border: 1px solid rgba(255,255,255,0.08) !important;
-        padding: 14px !important;
-    }
-
-    .stTextArea textarea:focus {
-        border: 1px solid #8b5cf6 !important;
-        box-shadow: 0 0 0 2px rgba(139,92,246,0.25) !important;
-    }
-
-    /* DATE INPUT */
-    .stDateInput input {
-        background-color: #111827 !important;
-        color: white !important;
-        border-radius: 12px !important;
-        border: 1px solid rgba(255,255,255,0.08) !important;
-    }
-
     /* BUTTON */
     .stButton > button {
         width: 100%;
@@ -1844,50 +1803,14 @@ def hero_section():
     st.markdown("""
     <div class="main-container">
         <div class="hero-title">
-            Build Your <span class="highlight">Professional Resume</span>
+            Build Your <span class="highlight">ATS friendly Resume</span>
         </div>
         <div class="hero-subtitle">
-            Create ATS-friendly resumes with beautiful templates
+            Create your resume
             in just a few minutes.
         </div>
     </div>
     """, unsafe_allow_html=True)
-
-def template_section():
-
-    st.markdown("""
-    <div class="section-box">
-        <div class="section-title">
-            Choose Resume Template
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    col1, col2, col3 = st.columns(3)
-
-    with col1:
-        st.markdown("""
-        <div class="template-card">
-            <div class="template-title">Minimal</div>
-            <div class="resume-preview"></div>
-        </div>
-        """, unsafe_allow_html=True)
-
-    with col2:
-        st.markdown("""
-        <div class="template-card">
-            <div class="template-title">Classic</div>
-            <div class="resume-preview"></div>
-        </div>
-        """, unsafe_allow_html=True)
-
-    with col3:
-        st.markdown("""
-        <div class="template-card">
-            <div class="template-title">Modern</div>
-            <div class="resume-preview"></div>
-        </div>
-        """, unsafe_allow_html=True)
 
 # =========================================================
 # PROFESSIONAL SUMMARY
@@ -1960,6 +1883,32 @@ def Certifications():
     <div class="section-box">
         <div class="section-title">
             Certifications
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# =========================================================
+# ACHIEVEMENTS
+# =========================================================
+def achievements():
+
+    st.markdown("""
+    <div class="section-box">
+        <div class="section-title">
+            Achievements
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# =========================================================
+# LANGUAGES
+# =========================================================
+def languages():
+
+    st.markdown("""
+    <div class="section-box">
+        <div class="section-title">
+           Languages
         </div>
     </div>
     """, unsafe_allow_html=True)
