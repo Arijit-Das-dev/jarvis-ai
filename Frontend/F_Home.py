@@ -406,8 +406,9 @@ def render_about_page():
                     Jarvis integrates powerful AI models intelligently
                     so users always get the best model for every task.
                 </div>                <div class="model-row">                    <div class="model-chip">⚡ Cohere</div>
-                    <div class="model-chip">🌌 Gemini</div>
+                    <div class="model-chip">✨ Gemini</div>
                     <div class="model-chip">🦙 Llama</div>
+                    <div class="model-chip"> ◎ GPT</div>
                     <div class="model-chip">🔥 Mistral</div>                </div>            </div>        </div>        <!-- =====================================================
              CTA
         ====================================================== -->        <div class="cta-section" id="about">            <div class="cta-title">
@@ -417,11 +418,7 @@ def render_about_page():
                 Stop switching between tools. Jarvis combines voice AI,
                 image generation, coding intelligence, prompt engineering,
                 and document reasoning into one premium SaaS experience.
-            </div>            <div class="hero-buttons" style="justify-content:center;">                <a href="#" class="primary-btn">
-                    Get Started Free
-                </a>                <a href="#" class="secondary-btn">
-                    Open Dashboard
-                </a>            </div>        </div>        <!-- =====================================================
+            </div>            <div class="hero-buttons" style="justify-content:center;">                           </div>        </div>        <!-- =====================================================
              FOOTER
         ====================================================== -->        <div class="footer">
             Built with intelligence • Powered by Jarvis AI
