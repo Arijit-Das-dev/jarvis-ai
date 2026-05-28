@@ -9,11 +9,15 @@ style1()
 # -------------------------------
 # FEATURE GROUP
 # -------------------------------
-features = [
+features_for_devs = [
     st.Page("CodeEditor.py", title="Code/Debug", icon=":material/code:"),
     st.Page("PromptEng.py", title="PromptLab", icon=":material/edit_note:"),
     st.Page("Scholar.py", title="Scholar", icon=":material/search:"),
-    st.Page("Resume.py", title="Resume", icon=":material/draft:"),
+    st.Page("Resume.py", title="Resume", icon=":material/draft:")
+]
+
+features_for_everyone = [
+    
     st.Page("main.py", title="Assistant", icon=":material/smart_toy:"),
     st.Page("Image.py", title="ImageLab", icon=":material/image:")
 ]
@@ -38,7 +42,9 @@ pages = {
         )
     ],
 
-    "Features":features,
+    "Everyone's choice":features_for_everyone,
+
+    "Developer's choice":features_for_devs,
 
     "Settings":[
         st.Page(
