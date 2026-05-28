@@ -1,6 +1,6 @@
 from elevenlabs.client import ElevenLabs
 from Backend.Config.settings import settings
-from Backend.Core.Features.LLmModelCore.llmService import elevenlabs_tts_model_provider
+from Backend.Core.Features.LLmModelCore.llm_Service import elevenlabs_tts_model_provider
 from elevenlabs.play import play
 
 def playAudio(content: str):

@@ -1,4 +1,4 @@
-from Backend.Core.Features.RagPipeLine.RetrievalPipeLine import RETRIEVAL_PIPELINE_MODEL
+from Backend.Core.Features.RagPipeLine.Retrieval_PipeLine import RETRIEVAL_PIPELINE_MODEL
 
 def main():
     

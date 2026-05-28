@@ -4,8 +4,8 @@ import uuid
 import sys
 import os
 from datetime import datetime
-from Backend.Core.Features.RagPipeLine.IngestionPipeLine import INGESTION_PIPELINE_MODEL
-from Backend.Core.Features.RagPipeLine.RetrievalPipeLine import RETRIEVAL_PIPELINE_MODEL
+from Backend.Core.Features.RagPipeLine.Ingestion_PipeLine import INGESTION_PIPELINE_MODEL
+from Backend.Core.Features.RagPipeLine.Retrieval_PipeLine import RETRIEVAL_PIPELINE_MODEL
 from Backend.Core.Features.PdfGenerator.generate_pdf import PDF_GENERATOR
 from Backend.Services.cohere_client_2 import MODEL_COHERE_2
 

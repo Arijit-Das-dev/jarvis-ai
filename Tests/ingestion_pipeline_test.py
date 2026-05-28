@@ -1,4 +1,4 @@
-from Backend.Core.Features.RagPipeLine.IngestionPipeLine import INGESTION_PIPELINE_MODEL
+from Backend.Core.Features.RagPipeLine.Ingestion_PipeLine import INGESTION_PIPELINE_MODEL
 
 ipm = INGESTION_PIPELINE_MODEL()
 

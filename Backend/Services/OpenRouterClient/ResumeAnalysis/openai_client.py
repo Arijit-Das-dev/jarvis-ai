@@ -1,6 +1,6 @@
 import os
 from Backend.Config.settings import settings # API KEY
-from Backend.Core.Features.LLmModelCore.llmService import llm_service_provider # LLM 
+from Backend.Core.Features.LLmModelCore.llm_Service import llm_service_provider # LLM 
 from openrouter import OpenRouter
 
 class MODEL_GPT:

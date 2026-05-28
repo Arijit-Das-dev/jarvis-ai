@@ -5,7 +5,7 @@ import uuid
 import streamlit as st
 import warnings
 import requests
-from Backend.Core.Features.LLmModelCore.voiceEngine import CoreEngine
+from Backend.Core.Features.LLmModelCore.voice_Engine import CoreEngine
 from Backend.Config.settings import settings
 from DB.MySQL.weather_db import insert_weather
 from DB.MongoDB.MainDB import insert_into_assistant

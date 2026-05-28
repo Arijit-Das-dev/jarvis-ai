@@ -1,7 +1,7 @@
 """ Setting up model : GEMINI """
 
 from Backend.Config.settings import settings
-from Backend.Core.Features.LLmModelCore.llmService import llm_service_provider
+from Backend.Core.Features.LLmModelCore.llm_Service import llm_service_provider
 from google import genai
 from google.genai import types
 import os

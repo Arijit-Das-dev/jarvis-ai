@@ -1,7 +1,7 @@
 """ Setting up Model : Mistral """
 import os
 from Backend.Config.settings import settings # API KEY
-from Backend.Core.Features.LLmModelCore.llmService import llm_service_provider # LLM model
+from Backend.Core.Features.LLmModelCore.llm_Service import llm_service_provider # LLM model
 from mistralai.client.models import SystemMessage, UserMessage, AssistantMessage
 from mistralai.client import Mistral
 

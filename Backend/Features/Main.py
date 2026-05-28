@@ -1,7 +1,7 @@
 import time as t
 import uuid
 from Backend.Services.llama_client import Jarvis
-from Backend.Core.Features.LLmModelCore.greetFunc import greet
+from Backend.Core.Features.LLmModelCore.greet_Func import greet
 from Frontend.F_Main import style3_MAIN, animation
 from DB.MySQL.wake_db import insert_wake
 from DB.MongoDB.MainDB import insert_into_user

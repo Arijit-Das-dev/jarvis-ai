@@ -17,7 +17,7 @@ from langchain_chroma import Chroma
 # ======================
 # EMBEDDING MODEL CONFIG
 # ======================
-from Backend.Core.Features.LLmModelCore.llmService import embedding_model_provider
+from Backend.Core.Features.LLmModelCore.llm_Service import embedding_model_provider
 
 
 # SETTING UP INGESTION PIPELINE MODEL

@@ -1,6 +1,6 @@
 import os
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from Backend.Core.Features.LLmModelCore.llmService import embedding_model_provider
+from Backend.Core.Features.LLmModelCore.llm_Service import embedding_model_provider
 from Backend.Services.cohere_client_1 import MODEL_COHERE
 from langchain_chroma import Chroma
 
