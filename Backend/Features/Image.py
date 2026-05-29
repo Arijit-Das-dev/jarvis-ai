@@ -4,7 +4,7 @@ import requests
 from PIL import Image
 from io import BytesIO
 import uuid
-from DB.mongo_db.ImageDB import insert_into_user
+from DB.mongo_db.image_db import insert_into_user
 
 # ---------- Session variables (TOP) ----------
 if "user_id" not in st.session_state:
