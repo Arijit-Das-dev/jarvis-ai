@@ -15,7 +15,7 @@ import time as t
 import warnings
 import pyaudio
 import io
-from DB.MongoDB.MainDB import insert_into_user
+from DB.mongo_db.MainDB import insert_into_user
 
 
 if "user_id" not in st.session_state:

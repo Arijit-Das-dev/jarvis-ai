@@ -1,4 +1,4 @@
-from Backend.Core.Features.LLmModelCore.TTS_ENGINE.elevenlabs_client import playAudio
+from Backend.Core.Features.LLmModelCore.tts_engine.elevenlabs_client import playAudio
 
 if __name__ == "__main__":
 
