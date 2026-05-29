@@ -10,10 +10,10 @@ style1()
 # FEATURE GROUP 1
 # -------------------------------
 features_for_devs = [
-    st.Page("CodeEditor.py", title="Code/Debug", icon=":material/code:"),
-    st.Page("PromptEng.py", title="PromptLab", icon=":material/edit_note:"),
-    st.Page("Scholar.py", title="Scholar", icon=":material/search:"),
-    st.Page("Resume.py", title="Resume", icon=":material/draft:")
+    st.Page("code_editor.py", title="Code/Debug", icon=":material/code:"),
+    st.Page("prompt_eng.py", title="PromptLab", icon=":material/edit_note:"),
+    st.Page("scholar.py", title="Scholar", icon=":material/search:"),
+    st.Page("resume.py", title="Resume", icon=":material/draft:")
 ]
 
 # -------------------------------
@@ -22,7 +22,7 @@ features_for_devs = [
 features_for_everyone = [
     
     st.Page("main.py", title="Assistant", icon=":material/smart_toy:"),
-    st.Page("Image.py", title="ImageLab", icon=":material/image:")
+    st.Page("image.py", title="ImageLab", icon=":material/image:")
 ]
 
 # -------------------------------
@@ -32,7 +32,7 @@ pages = {
     "Account": [
         st.Page(
             "account.py",
-            title="Account",
+            title="account",
             icon=":material/account_circle:"
         )
     ],
@@ -52,7 +52,7 @@ pages = {
 
     "Settings":[
         st.Page(
-            "settings/settingsMaterials.py",
+            "settings/settings_materials.py",
             title="Settings",
             icon=":material/settings:"
         )

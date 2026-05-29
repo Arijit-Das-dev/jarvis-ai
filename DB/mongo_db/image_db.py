@@ -8,7 +8,9 @@ Stores users prompt
 from pymongo import MongoClient
 from datetime import datetime
 from Backend.Config.settings import settings
+from Backend.models.db_essentials.collections import MongoClientManager
 
+mongo = MongoClientManager()
 
 def connect_db():
 
@@ -24,12 +26,10 @@ def insert_into_user(user_id, prompt):
 
     user_prompt = connect_db()
 
-    document = {
-
-        "user_id":user_id,
-        "user_prompt":prompt,
-        "date":datetime.now()
-
-    }
+    document = mongo.image_document(
+        user_id=user_id, 
+        user_prompt=prompt, 
+        date=datetime.now()
+    )
 
     user_prompt.insert_one(document)
