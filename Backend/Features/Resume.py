@@ -4,7 +4,7 @@ import streamlit as st
 import Frontend.F_Resume as ui
 from Backend.Core.Features.ResumeBuilder.pdf_parser import PDF_PARSER
 from Backend.Services.OpenRouterClient.ResumeAnalysis.openai_client import MODEL_GPT
-from Backend.models.ResumeEssentials.essentials import ResumeEssentials
+from Backend.models.resume_essentials.essentials import ResumeEssentials
 from Backend.Core.Features.ResumeBuilder.resume_builder import generate_resume
 
 # CUSTOM CSS
