@@ -6,6 +6,9 @@ Using MongoDB for storing user codes and user queries
 from pymongo import MongoClient
 from datetime import datetime
 from Backend.Config.settings import settings 
+from Backend.models.db_essentials.collections import MongoClientManager
+
+mongo = MongoClientManager()
 
 def connect_db():
 
@@ -42,13 +45,11 @@ def save_user_code(user_id, user_code):
 
     code_collection, _ = connect_db()
 
-    document = {
-
-        "user_id":user_id,
-        "user_code":user_code,
-        "date":datetime.now()
-
-    }
+    document = mongo.editor_code_document(
+        user_id=user_id, 
+        user_code=user_code, 
+        date=datetime.now()
+    )
 
     code_collection.insert_one(document)
 
@@ -65,12 +66,9 @@ def save_user_query(user_id, user_query):
 
     _, co_pilot_collection = connect_db()
 
-    document = {
-
-        "user_id":user_id,
-        "user_query":user_query,
-        "date":datetime.now()
-
-    }
-
+    document = mongo.editor_query_document(
+        user_id=user_id,
+        user_query=user_query,
+        date=datetime.now()
+    )
     co_pilot_collection.insert_one(document)

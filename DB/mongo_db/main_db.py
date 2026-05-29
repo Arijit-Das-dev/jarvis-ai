@@ -6,6 +6,9 @@ Storing user queries and assistant queries to MongoDB
 from pymongo import MongoClient
 from datetime import datetime
 from Backend.Config.settings import settings
+from Backend.models.db_essentials.collections import MongoClientManager
+
+mongo = MongoClientManager()
 
 def connect_db():
 
@@ -23,13 +26,11 @@ def insert_into_user(user_id, query_user):
 
     user_query, _ = connect_db()
 
-    document = {
-
-        "user_id":user_id,
-        "query_user":query_user,
-        "date":datetime.now()
-
-    }
+    document = mongo.main_db_user_document(
+        user_id=user_id,
+        user_query=user_query,
+        date=datetime.now()
+    )
 
     user_query.insert_one(document)
 
@@ -37,12 +38,10 @@ def insert_into_assistant(user_id, ai_answer):
 
     _, assistant_query = connect_db()
 
-    document = {
-
-        "user_id":user_id,
-        "ai_answer":ai_answer,
-        "date":datetime.now()
-
-    }
-
+    document = mongo.main_db_assistant_document(
+        user_id=user_id,
+        ai_answer=ai_answer,
+        date=datetime.now()
+    )
+    
     assistant_query.insert_one(document)
