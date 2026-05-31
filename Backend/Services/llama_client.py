@@ -6,8 +6,9 @@ import streamlit as st
 import warnings
 import requests
 from Backend.Core.Features.LLmModelCore.voice_Engine import CoreEngine
+from Backend.Core.Features.LLmModelCore.llm_Service import llm_service_provider
 from Backend.Config.settings import settings
-from DB.MySQL.weather_db import insert_weather
+from DB.mysql.weather_db import insert_weather
 from DB.mongo_db.main_db import insert_into_assistant
 from groq import Groq
 
@@ -32,7 +33,7 @@ class Jarvis(CoreEngine):
         self.chat_history.append({"role": "user", "content": prompt})
 
         response = self.client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=llm_service_provider.MODEL_LLAMA,
             messages=self.chat_history  # send full chat history
         )
 
