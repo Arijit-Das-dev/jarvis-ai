@@ -8,9 +8,9 @@ Stores users prompt
 from pymongo import MongoClient
 from datetime import datetime
 from Backend.Config.settings import settings
-from Backend.models.db_essentials.collections import MongoClientManager
+from Backend.Utils.mongo_doc_builder import MongoDocumentBuilder
 
-mongo = MongoClientManager()
+mongo = MongoDocumentBuilder()
 
 def connect_db():
 

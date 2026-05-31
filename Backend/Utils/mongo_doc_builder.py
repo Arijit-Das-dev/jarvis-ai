@@ -1,4 +1,4 @@
-class MongoClientManager:
+class MongoDocumentBuilder:
 
     # IMAGE DATABASE
     def image_document(self, user_id, user_prompt, date):
