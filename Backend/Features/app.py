@@ -26,14 +26,6 @@ features_for_everyone = [
 # MAIN NAVIGATION
 # -------------------------------
 pages = {
-    "Account": [
-        st.Page(
-            "account.py",
-            title="Account",
-            icon=":material/account_circle:"
-        )
-    ],
-
     "About": [
         st.Page(
             "home.py",
@@ -46,10 +38,6 @@ pages = {
     "Everyone's choice":features_for_everyone,
 
     "Developer's choice":features_for_devs,
-
-    "Settings":[st.Page("settings/settings_materials.py",title="Settings",icon=":material/settings:")],
-
-    "Profile":[st.Page("User/profile_materials.py", title="Profile", icon=":material/person:")]
 }
 
 # -------------------------------

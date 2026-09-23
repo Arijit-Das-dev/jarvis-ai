@@ -8,7 +8,7 @@ import requests
 from Backend.Core.Features.LLmModelCore.voice_Engine import CoreEngine
 from Backend.Core.Features.LLmModelCore.llm_Service import llm_service_provider
 from Backend.Config.settings import settings
-from DB.mysql.weather_db import insert_weather
+from DB.MySQL.weather_db import insert_weather
 from DB.mongo_db.main_db import insert_into_assistant
 from groq import Groq
 
